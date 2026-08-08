@@ -12,6 +12,11 @@ const graduates = rows('people/alumni/Ph.D. Graduates.csv');
 const masters = rows('people/alumni/Thesis Master Graduates.csv');
 const former = [...rows('people/former students/Honors Research Students.csv'), ...rows('people/former students/REU Students.csv')];
 const facultyInfo = Object.fromEntries(faculty);
+const affiliationLabel = (affiliation: string) => ({
+  'CSCE Department': 'Uark CSCE',
+  'Honors College': 'Uark Honors',
+  'ELEG Department': 'Uark ELEG',
+}[affiliation] ?? affiliation);
 const profileLinks = [
   { label: 'CV', href: facultyInfo.CV },
   { label: 'Website', href: facultyInfo.Website },
@@ -27,6 +32,6 @@ const profileLinks = [
     <LegacyPanel title="Ph.D. Students" tone="primary" id="Ph.D. Students"><CurrentStudentGrid students={currentStudents} degree="Ph.D." /></LegacyPanel>
     <LegacyPanel title="MS Students" tone="primary" id="Master Students"><CurrentStudentGrid students={currentStudents} degree="MS" /></LegacyPanel>
   </div>
-  <LegacyPanel title="Alumni" tone="primary" id="Alumni" class="alumni-panel"><h3>Ph.D. Graduates</h3><div class="alumni-record-grid">{graduates.map((row) => <PersonRecord name={`${row[1]} ${row[2]}`} affiliation={row[4]} label={row[5]} description={row[6]} period={row[3]} nameHref={`/img/people/alumni/phd/${row[0]}.jpg`} descriptionHref={`/pub/?year=${row[3].slice(0, 4)}&search=Thesis&author=${row[2]}`} />)}</div><h3>Thesis Master Graduates</h3><div class="alumni-record-grid">{masters.map((row) => <PersonRecord name={`${row[1]} ${row[2]}`} affiliation={row[4]} label={row[5]} description={row[6]} period={row[3]} descriptionHref={`/pub/?year=${row[3].slice(0, 4)}&search=Thesis&author=${row[2]}`} />)}</div></LegacyPanel>
-  <LegacyPanel title="Former Students" tone="primary" id="Former Students"><h3>Honors Research Students</h3><div class="alumni-record-grid">{former.slice(0, 2).map((row) => <PersonRecord name={`${row[1]} ${row[2]}`} affiliation={row[4]} label={row[5]} description={row[6]} period={row[3]} nameHref={`/img/people/former/honors/${row[0]}.jpg`} />)}</div><h3>REU Students</h3><div class="alumni-record-grid">{former.slice(2).map((row) => <PersonRecord name={`${row[1]} ${row[2]}`} affiliation={row[4]} label={row[5]} description={row[6]} period={row[3]} nameHref={row[0] === 'yisogai' ? undefined : `/img/people/former/reu/${row[0]}.jpg`} />)}</div></LegacyPanel>
+  <LegacyPanel title="Alumni" tone="primary" id="Alumni" class="alumni-panel"><h3>Ph.D. Graduates</h3><div class="alumni-record-grid">{graduates.map((row) => <PersonRecord name={`${row[1]} ${row[2]}`} affiliation={affiliationLabel(row[4])} label={row[5]} description={row[6]} period={row[3]} nameHref={`/img/people/alumni/phd/${row[0]}.jpg`} descriptionHref={`/pub/?year=${row[3].slice(0, 4)}&search=Thesis&author=${row[2]}`} />)}</div><h3>Thesis Master Graduates</h3><div class="alumni-record-grid">{masters.map((row) => <PersonRecord name={`${row[1]} ${row[2]}`} affiliation={affiliationLabel(row[4])} label={row[5]} description={row[6]} period={row[3]} descriptionHref={`/pub/?year=${row[3].slice(0, 4)}&search=Thesis&author=${row[2]}`} />)}</div></LegacyPanel>
+  <LegacyPanel title="Former Students" tone="primary" id="Former Students"><h3>Honors Research Students</h3><div class="alumni-record-grid">{former.slice(0, 2).map((row) => <PersonRecord name={`${row[1]} ${row[2]}`} affiliation={affiliationLabel(row[4])} label={row[5]} description={row[6]} period={row[3]} nameHref={`/img/people/former/honors/${row[0]}.jpg`} />)}</div><h3>REU Students</h3><div class="alumni-record-grid">{former.slice(2).map((row) => <PersonRecord name={`${row[1]} ${row[2]}`} affiliation={affiliationLabel(row[4])} label={row[5]} description={row[6]} period={row[3]} nameHref={row[0] === 'yisogai' ? undefined : `/img/people/former/reu/${row[0]}.jpg`} />)}</div></LegacyPanel>
 </LegacyLayout>

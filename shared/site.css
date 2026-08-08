@@ -630,17 +630,17 @@ a {
   border-radius: 50%;
 }
 
-.person-record h5,
+.person-record h3,
 .person-record p {
   margin: 0;
 }
 
-.person-record h5 {
+.person-record h3 {
   font-size: 1.05rem;
   line-height: 1.35;
 }
 
-.person-record h5 a {
+.person-record h3 a {
   color: var(--e3da-primary-dark);
   text-decoration: underline;
 }

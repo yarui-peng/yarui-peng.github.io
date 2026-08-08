@@ -16,7 +16,7 @@ const { name, affiliation, image, label, description, period, nameHref, descript
 <article class="person-record">
   {image && <img class="person-record-image" src={image} alt={name} />}
   <div>
-    <h5>{nameHref ? <a href={nameHref}>{name}</a> : name}<span class="person-affiliation">{affiliation}</span></h5>
+    <h3>{nameHref ? <a href={nameHref}>{name}</a> : name}<span class="person-affiliation">{affiliation}</span></h3>
     <p><strong>{label}:</strong> {descriptionHref ? <a href={descriptionHref}>{description}</a> : description}<time>{period}</time></p>
   </div>
 </article>
