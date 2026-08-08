@@ -454,6 +454,35 @@ a {
   font-size: 1.25rem;
 }
 
+.current-student-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.current-student-grid .person-profile {
+  grid-template-columns: minmax(5rem, 7rem) 1fr;
+  gap: 1rem;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--e3da-primary) 22%, var(--e3da-line));
+  background: color-mix(in srgb, var(--e3da-paper) 94%, var(--e3da-primary));
+}
+
+.current-student-grid .person-profile-image {
+  max-width: 7rem;
+}
+
+.current-student-grid .person-profile-heading h3 {
+  font-size: 1.2rem;
+}
+
+.current-student-bio {
+  margin: 0.65rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 .current-student-year {
   display: inline-block;
   margin-top: 0.25rem;
@@ -465,6 +494,12 @@ a {
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1.2;
+}
+
+@media (max-width: 50rem) {
+  .current-student-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .person-profile-image {
