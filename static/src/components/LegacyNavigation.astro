@@ -16,12 +16,12 @@ const peopleAnchors: Record<string, string> = {
   'Former Students': '#Former%20Students',
 };
 
-const researchAnchors: Record<string, string> = {
-  Overview: '#Overview',
-  EDA4Chiplet: '#EDA4Chiplet',
-  EDA4Power: '#EDA4Power',
-  EDA4HI: '#EDA4HI',
-  Projects: '#Projects',
+const researchLinks: Record<string, string> = {
+  Overview: '/research/#Overview',
+  EDA4Chiplet: '/research/eda4chiplet/',
+  EDA4Power: '/research/eda4power/',
+  EDA4HI: '/research/eda4hi/',
+  Projects: '/research/#Projects',
 };
 
 const teachingAnchors: Record<string, string> = {
@@ -40,7 +40,7 @@ const publicationQueries: Record<string, string> = {
 function submenuHref(label: string, href: string, subitem: string): string {
   if (label === 'Resource') return `/resource/${subitem.toLowerCase()}/`;
   if (label === 'People') return href + peopleAnchors[subitem];
-  if (label === 'Research') return href + researchAnchors[subitem];
+  if (label === 'Research') return researchLinks[subitem];
   if (label === 'Teaching') return href + teachingAnchors[subitem];
   if (label === 'Publication') return href + publicationQueries[subitem];
   return href;
