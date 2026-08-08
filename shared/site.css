@@ -432,10 +432,7 @@ a {
 }
 
 .person-profile {
-  display: grid;
-  grid-template-columns: minmax(10rem, 18rem) 1fr;
-  gap: 2rem;
-  align-items: start;
+  display: flow-root;
 }
 
 .current-student-intro {
@@ -461,8 +458,6 @@ a {
 }
 
 .current-student-grid .person-profile {
-  grid-template-columns: 5rem 1fr;
-  gap: 1rem;
   min-width: 0;
   padding: 1rem;
   border: 1px solid color-mix(in srgb, var(--e3da-primary) 22%, var(--e3da-line));
@@ -474,16 +469,23 @@ a {
 }
 
 .current-student-grid .person-profile-heading h3 {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
   font-size: 1.2rem;
 }
 
 .current-student-grid .person-profile-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
   min-height: 0;
 }
 
 .current-student-grid .person-profile-badge {
-  display: inline-block;
-  margin-top: 0.25rem;
+  flex: 0 0 auto;
+  margin-left: auto;
   border: 1px solid var(--e3da-time-border);
   border-radius: 999px;
   padding: 0.15rem 0.5rem;
@@ -496,9 +498,10 @@ a {
 
 .current-student-grid .person-actions {
   position: static;
-  width: max-content;
+  flex: 0 1 auto;
+  width: auto;
   max-width: 100%;
-  margin-top: 0.65rem;
+  margin: 0;
 }
 
 .current-student-bio {
@@ -514,8 +517,10 @@ a {
 }
 
 .person-profile-image {
+  float: left;
   width: 100%;
   max-width: 15rem;
+  margin: 0 2rem 0.75rem 0;
   aspect-ratio: 1;
   object-fit: cover;
   border: 0.35rem solid var(--e3da-image-border, #ccc);
@@ -542,19 +547,24 @@ a {
   top: 0;
   right: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0;
   margin: 0 0 1rem;
   border: 1px solid var(--e3da-primary);
   border-radius: 0.35rem;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .person-action {
-  padding: 0.45rem 0.7rem;
+  flex: 0 0 auto;
+  padding: 0.3rem 0.5rem;
   border: 0;
   color: var(--e3da-primary-dark);
+  font-size: 0.88rem;
+  line-height: 1.2;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .person-action + .person-action {
@@ -643,10 +653,6 @@ a {
 
   .publication-entry {
     padding: 0.1rem 0.25rem 0.5rem 0.1rem;
-  }
-
-  .person-profile {
-    grid-template-columns: 1fr;
   }
 
   .person-profile-image {
