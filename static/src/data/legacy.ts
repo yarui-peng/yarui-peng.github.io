@@ -65,8 +65,8 @@ function field(fields: Record<string, unknown>, name: string): string | undefine
 function authorList(value: unknown): PublicationAuthor[] {
   if (!Array.isArray(value)) return typeof value === 'string' ? [{ name: value }] : [];
   const homepageLinks: Record<string, string> = {
-    'yarui peng': '/people/#yrpeng',
-    'mehran sanjabiasasi': '/people/#mehrans',
+    'yarui peng': '/people/#Faculty',
+    'mehran sanjabiasasi': '/people/#Ph.D.%20Students',
     'md. arafat kabir': '/people/#Alumni',
     'imam al razi': '/people/#Alumni',
     'joshua mitchener': '/people/#Former%20Students',
