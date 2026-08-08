@@ -438,6 +438,59 @@ a {
   align-items: start;
 }
 
+.current-student-intro {
+  margin: 0 0 1.25rem;
+}
+
+.current-student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+}
+
+.current-student-card {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--e3da-primary) 22%, var(--e3da-line));
+  background: color-mix(in srgb, var(--e3da-paper) 94%, var(--e3da-primary));
+}
+
+.current-student-avatar {
+  width: 4.5rem;
+  height: 4.5rem;
+  flex: 0 0 4.5rem;
+  border: 0.2rem solid var(--e3da-image-border);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.current-student-content {
+  min-width: 0;
+}
+
+.current-student-content h3 {
+  margin: 0;
+  color: var(--e3da-ink);
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.current-student-id {
+  margin: 0.25rem 0 0.65rem;
+  color: var(--e3da-ink-muted);
+  font-size: 0.9rem;
+}
+
+.current-student-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+}
+
 .person-profile-image {
   width: 100%;
   max-width: 15rem;

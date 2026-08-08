@@ -1,0 +1,29 @@
+---
+import type { CurrentStudent } from '../data/current-students';
+
+interface Props {
+  students: CurrentStudent[];
+}
+
+const { students } = Astro.props;
+---
+
+<div class="current-student-grid">
+  {students.map((student) => {
+    const profileUrl = `https://github.com/${student.githubUsername}`;
+    const siteUrl = `https://${student.githubUsername}.github.io/`;
+    const avatarUrl = `https://github.com/${student.githubUsername}.png?size=256`;
+
+    return <article class="current-student-card">
+      <img class="current-student-avatar" src={avatarUrl} alt={`${student.name} GitHub avatar`} loading="lazy" />
+      <div class="current-student-content">
+        <h3>{student.name}</h3>
+        <p class="current-student-id">E3DA ID: <strong>{student.e3daId}</strong></p>
+        <div class="current-student-links">
+          <a href={siteUrl} target="_blank" rel="noreferrer">Personal site</a>
+          <a href={profileUrl} target="_blank" rel="noreferrer">GitHub profile</a>
+        </div>
+      </div>
+    </article>;
+  })}
+</div>
