@@ -39,7 +39,7 @@ These decisions are part of the project requirements and should be preserved whe
 - Public software packages may require a short survey before download. Keep release metadata separate from file storage, log only the required survey data, and use signed file-scoped access tokens rather than exposing directory listings.
 - Reusable shared behavior belongs in `shared/` or a clearly owned package. Do not create parallel copies of shared theme or site CSS in `static/` and `internal/` unless a deployment boundary explicitly requires a self-contained copy.
 - Before finishing changes, build every affected layer, check the relevant route or endpoint, and inspect the public repository for generated files, private data, credentials, large binaries, and accidental path dependencies.
-- Keep the public current-student roster sanitized and explicit. Use public name, work email, degree group, lab-entry year, GitHub username for the avatar and personal Pages URL only; never import the private Personnel workbook directly into the static build.
+- Keep the public current-student roster sanitized and explicit. Use public name, work email, degree group, lab-entry year, locally stored portfolio photo, personal Pages URL, and a short locally stored bio only; never import the private Personnel workbook directly into the static build.
 - Current-student cards should stay compact: show the lab-entry year as a small badge, and use the work email and personal site as the actionable links.
 - Current students should reuse the established `PersonProfile` presentation used by the People page, grouped by degree rather than introducing a second person-card pattern.
 - No additional package is required for the current GitHub integration: public profile, avatar, organization, and Pages links use normal URLs. If roster synchronization becomes necessary, prefer built-in `fetch` in GitHub Actions with a read-only secret; add `@octokit/rest` only if its typed API helpers materially simplify the workflow. Do not add an XLSX runtime dependency for the private Personnel workbook; export a reviewed public CSV or TypeScript roster instead.
@@ -56,7 +56,7 @@ The root GitHub Actions workflow builds only `static/`. It must never upload `dy
 
 ### GitHub organization and student sites
 
-The public People page links current students to the `e3da` organization, each student's public GitHub profile, and the conventional `https://<github-username>.github.io/` personal site. It also links to the generated organization roster at `https://github.com/e3da/.github/blob/main/profile/README.md`. GitHub avatars are loaded from the public profile image endpoint at build-time page rendering.
+The public People page links current students to the `e3da` organization, each student's personal site, and the generated organization roster at `https://github.com/e3da/.github/blob/main/profile/README.md`. Portfolio photos and short bios are reviewed and stored locally in the static source so the page does not depend on remote sites at render time.
 
 The organization workflow at `e3da/.github/.github/workflows/main.yml` owns automatic membership discovery and updates `profile/README.md`. The v3 static site should link to that README but should not duplicate its privileged API access. The workflow currently uses the `YRPENG_E3DA_RO` Actions secret to read organization membership; this secret belongs only in the organization repository's Actions settings.
 

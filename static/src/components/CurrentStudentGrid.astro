@@ -1,6 +1,7 @@
 ---
 import type { CurrentStudent } from '../data/current-students';
 import PersonProfile from './PersonProfile.astro';
+import { currentStudentBios } from '../data/current-student-bios';
 
 interface Props {
   students: CurrentStudent[];
@@ -17,18 +18,16 @@ const degreeGroups: CurrentStudent['degree'][] = ['Ph.D.', 'MS', 'BS'];
   return <section class="current-student-group" aria-labelledby={`current-students-${degree}`}>
     <h3 id={`current-students-${degree}`}>{degree} Students</h3>
     {group.map((student) => {
-      const siteUrl = `https://${student.githubUsername}.github.io/`;
-      const avatarUrl = `https://github.com/${student.githubUsername}.png?size=256`;
-
       return <PersonProfile
         name={student.name}
-        image={avatarUrl}
+        image={student.imagePath}
         links={[
           { label: 'Email', href: `mailto:${student.email}` },
-          { label: 'Personal site', href: siteUrl },
+          { label: 'Personal site', href: student.websiteUrl },
         ]}
       >
         <span class="current-student-year">{student.entryYear}</span>
+        <p class="current-student-bio">{currentStudentBios[student.e3daId]}</p>
       </PersonProfile>;
     })}
   </section>;
