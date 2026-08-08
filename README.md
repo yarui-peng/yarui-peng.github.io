@@ -23,6 +23,32 @@ This is the next-generation draft site. The legacy website, v1, and v2 are prese
 - Write portable Node.js using standard APIs so Bun remains a possible future runtime.
 - Do not put credentials, private data, or private media in the static build.
 
+## Project directives
+
+These decisions are part of the project requirements and should be preserved when extending v3:
+
+- The public frontend uses Astro, Tailwind CSS, and daisyUI. Keep the existing `e3da-light` and `e3da-dark` themes: light is primarily blue, while dark is primarily dark purple and navy.
+- Prefer current, maintained tools with few dependencies. Use the existing Node.js 22 baseline and standard APIs where practical; consider Bun or Go only for a focused service where they provide a clear benefit.
+- The legacy PHP/Bootstrap website, v1, and v2 are reference material. Do not modify them during v3 work, and do not copy legacy private data into a public build.
+- Keep editorial and catalog data human-editable and file-based: Markdown, YAML, JSON, CSV, and BibTeX are preferred before introducing a database.
+- The public GitHub/Cloudflare deployment and the internal server deployment are separate websites. The internal site must remain independently usable even if the public static site is unavailable.
+- The planned deployment topology is: GitHub Pages or Cloudflare Pages for public static assets; an outside server for limited public dynamic services and release downloads; and a private or China-hosted server for member services, teaching, administration, and LDAP-backed SSO.
+- The internal site must not expose LDAP credentials or directly handle LDAP passwords. Use an LDAP-backed OIDC identity provider and explicit group-to-role authorization. Development open login is temporary and must fail closed in production.
+- Private manuals, PDFs, videos, software archives, survey records, session data, and credentials must stay outside the static build and outside public CDN aliases. Serve protected files through an authenticated, range-aware endpoint.
+- Public software packages may require a short survey before download. Keep release metadata separate from file storage, log only the required survey data, and use signed file-scoped access tokens rather than exposing directory listings.
+- Reusable shared behavior belongs in `shared/` or a clearly owned package. Do not create parallel copies of shared theme or site CSS in `static/` and `internal/` unless a deployment boundary explicitly requires a self-contained copy.
+- Before finishing changes, build every affected layer, check the relevant route or endpoint, and inspect the public repository for generated files, private data, credentials, large binaries, and accidental path dependencies.
+
+### Deployment matrix
+
+| Layer | Purpose | Deployment | May be public? |
+| --- | --- | --- | --- |
+| `shared/ + static/` | Static public website | GitHub Pages or Cloudflare Pages | Yes |
+| `shared/ + static/ + dynamic/` | Public website with server-side services | Public server behind Nginx or equivalent | Only approved services |
+| `shared/ + static/ + dynamic/ + internal/` | Full member and administration website | Private/internal server with OIDC and LDAP | No |
+
+The root GitHub Actions workflow builds only `static/`. It must never upload `dynamic/`, `internal/`, private media, environment files, or runtime session data as a static artifact.
+
 ## Public and internal deployments
 
 The source layers are cumulative: `shared/ + static/` is the static website, `shared/ + static/ + dynamic/` is the public website with server-side services, and `shared/ + static/ + dynamic/ + internal/` is the complete internal deployment. GitHub Actions builds only `static/` for GitHub Pages or Cloudflare Pages; it never publishes `dynamic/` or `internal/` as static assets.
