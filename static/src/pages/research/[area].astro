@@ -19,10 +19,6 @@ const { area } = Astro.props;
     <div class="content-copy">
       <p>{area.description}</p>
       <ResearchGallery areaTitle={area.title} images={area.images} />
-      <div class="research-page-links join join-vertical sm:join-horizontal" role="group" aria-label="Research navigation">
-        <a class="btn btn-primary join-item" href="/research/">Research overview</a>
-        {researchOverview.areas.filter((otherArea) => otherArea.id !== area.id).map((otherArea) => <a class="btn btn-outline join-item" href={`/research/${otherArea.id.toLowerCase()}/`}>{otherArea.title}</a>)}
-      </div>
     </div>
   </LegacyPanel>
 </LegacyLayout>
