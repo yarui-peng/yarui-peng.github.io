@@ -135,6 +135,39 @@ a {
   scrollbar-width: thin;
 }
 
+.research-gallery-shell {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.research-gallery-shell .research-gallery {
+  min-width: 0;
+  margin-top: 0;
+}
+
+.research-gallery-control {
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid var(--color-base-300);
+  border-radius: 999px;
+  background: var(--color-base-200);
+  color: var(--color-base-content);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.research-gallery-control:hover,
+.research-gallery-control:focus-visible {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-primary-content);
+}
+
 .research-gallery-item {
   display: block;
   flex: 0 0 min(78%, 16rem);
@@ -353,6 +386,10 @@ a {
   color: var(--e3da-primary-dark);
   font-weight: 700;
   text-align: left;
+}
+
+.legacy-data-table tbody tr:hover {
+  background: color-mix(in srgb, var(--color-primary) 12%, var(--color-base-100));
 }
 
 .software-directory {
