@@ -23,8 +23,10 @@ const degreeGroups: CurrentStudent['degree'][] = ['Ph.D.', 'MS', 'BS'];
       return <PersonProfile
         name={student.name}
         image={avatarUrl}
-        email={student.email}
-        links={[{ label: 'Personal site', href: siteUrl }]}
+        links={[
+          { label: 'Email', href: `mailto:${student.email}` },
+          { label: 'Personal site', href: siteUrl },
+        ]}
       >
         <span class="current-student-year">{student.entryYear}</span>
       </PersonProfile>;
