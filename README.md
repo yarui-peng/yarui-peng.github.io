@@ -39,7 +39,7 @@ These decisions are part of the project requirements and should be preserved whe
 - Public software packages may require a short survey before download. Keep release metadata separate from file storage, log only the required survey data, and use signed file-scoped access tokens rather than exposing directory listings.
 - Reusable shared behavior belongs in `shared/` or a clearly owned package. Do not create parallel copies of shared theme or site CSS in `static/` and `internal/` unless a deployment boundary explicitly requires a self-contained copy.
 - Before finishing changes, build every affected layer, check the relevant route or endpoint, and inspect the public repository for generated files, private data, credentials, large binaries, and accidental path dependencies.
-- Keep the public current-student roster sanitized and explicit. Use E3DA ID, public name, GitHub username, profile, avatar, and personal Pages URL only; never import the private Personnel workbook directly into the static build.
+- Keep the public current-student roster sanitized and explicit. Use public name, work email, degree group, lab-entry year, GitHub username for the avatar and personal Pages URL only; never import the private Personnel workbook directly into the static build.
 - No additional package is required for the current GitHub integration: public profile, avatar, organization, and Pages links use normal URLs. If roster synchronization becomes necessary, prefer built-in `fetch` in GitHub Actions with a read-only secret; add `@octokit/rest` only if its typed API helpers materially simplify the workflow. Do not add an XLSX runtime dependency for the private Personnel workbook; export a reviewed public CSV or TypeScript roster instead.
 
 ### Deployment matrix

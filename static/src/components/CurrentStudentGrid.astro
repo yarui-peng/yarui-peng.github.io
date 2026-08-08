@@ -6,24 +6,32 @@ interface Props {
 }
 
 const { students } = Astro.props;
+const degreeGroups: CurrentStudent['degree'][] = ['Ph.D.', 'MS', 'BS'];
 ---
 
-<div class="current-student-grid">
-  {students.map((student) => {
-    const profileUrl = `https://github.com/${student.githubUsername}`;
-    const siteUrl = `https://${student.githubUsername}.github.io/`;
-    const avatarUrl = `https://github.com/${student.githubUsername}.png?size=256`;
+{degreeGroups.map((degree) => {
+  const group = students.filter((student) => student.degree === degree);
+  if (group.length === 0) return null;
 
-    return <article class="current-student-card">
-      <img class="current-student-avatar" src={avatarUrl} alt={`${student.name} GitHub avatar`} loading="lazy" />
-      <div class="current-student-content">
-        <h3>{student.name}</h3>
-        <p class="current-student-id">E3DA ID: <strong>{student.e3daId}</strong></p>
-        <div class="current-student-links">
-          <a href={siteUrl} target="_blank" rel="noreferrer">Personal site</a>
-          <a href={profileUrl} target="_blank" rel="noreferrer">GitHub profile</a>
-        </div>
-      </div>
-    </article>;
-  })}
-</div>
+  return <section class="current-student-group" aria-labelledby={`current-students-${degree}`}>
+    <h3 id={`current-students-${degree}`}>{degree} Students</h3>
+    <div class="current-student-grid">
+      {group.map((student) => {
+        const siteUrl = `https://${student.githubUsername}.github.io/`;
+        const avatarUrl = `https://github.com/${student.githubUsername}.png?size=256`;
+
+        return <article class="current-student-card">
+          <img class="current-student-avatar" src={avatarUrl} alt={`${student.name} GitHub avatar`} loading="lazy" />
+          <div class="current-student-content">
+            <h4>{student.name}</h4>
+            <p class="current-student-meta">Entered E3DA Lab: <strong>{student.entryYear}</strong></p>
+            <div class="current-student-links">
+              <a href={siteUrl} target="_blank" rel="noreferrer">Personal site</a>
+              <a href={`mailto:${student.email}`}>{student.email}</a>
+            </div>
+          </div>
+        </article>;
+      })}
+    </div>
+  </section>;
+})}
