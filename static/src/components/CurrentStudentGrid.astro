@@ -24,7 +24,7 @@ const degreeGroups: CurrentStudent['degree'][] = ['Ph.D.', 'MS', 'BS'];
           <img class="current-student-avatar" src={avatarUrl} alt={`${student.name} GitHub avatar`} loading="lazy" />
           <div class="current-student-content">
             <h4>{student.name}</h4>
-            <p class="current-student-meta">Entered E3DA Lab: <strong>{student.entryYear}</strong></p>
+            <span class="current-student-year">{student.entryYear}</span>
             <div class="current-student-links">
               <a href={siteUrl} target="_blank" rel="noreferrer">Personal site</a>
               <a href={`mailto:${student.email}`}>{student.email}</a>
