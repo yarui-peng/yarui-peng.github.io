@@ -16,6 +16,10 @@
   --e3da-image-border: var(--color-base-300);
 }
 
+[data-theme='e3da-dark'] {
+  --e3da-primary-dark: var(--color-info);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -461,6 +465,10 @@ a {
   gap: 1rem;
 }
 
+.current-student-grid-phd {
+  grid-template-columns: 1fr;
+}
+
 .current-student-grid .person-profile {
   min-width: 0;
   padding: 1rem;
@@ -470,6 +478,10 @@ a {
 
 .current-student-grid .person-profile-image {
   max-width: 5rem;
+}
+
+.current-student-grid-phd .person-profile-image {
+  max-width: 10rem;
 }
 
 .current-student-grid .person-profile-heading h3 {
