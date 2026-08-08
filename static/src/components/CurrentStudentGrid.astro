@@ -17,7 +17,7 @@ const entryYears = [...new Set(degreeStudents.map((student) => student.entryYear
   const group = degreeStudents.filter((student) => student.entryYear === entryYear);
 
   return <section class="current-student-group" aria-labelledby={`current-students-${degree}-${entryYear}`}>
-    <h3 id={`current-students-${degree}-${entryYear}`}>{entryYear} Entry</h3>
+    <h3 id={`current-students-${degree}-${entryYear}`}>{entryYear}</h3>
     <div class="current-student-grid">
       {group.map((student) => {
         return <PersonProfile
