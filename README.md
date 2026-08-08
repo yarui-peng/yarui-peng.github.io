@@ -1,0 +1,71 @@
+# E3DA Website v3 Draft
+
+This is the next-generation draft site. The legacy website, v1, and v2 are preserved for reference and are not modified by this project.
+
+## Structure
+
+- `static/`: Astro, Tailwind, and daisyUI public site copied from v2.
+- `shared/`: shared theme CSS and future data contracts.
+- `content/`: human-editable public content sources.
+- `media/public/`: public files that may be published by the static site or file server.
+- `media/private/`: private files. Never copy this directory into `static/public/`.
+- `dynamic/`: public server-side services and file-oriented data contracts.
+- `internal/site/`: standalone Astro SSR website for member services, protected files, and future LDAP-backed SSO.
+- `infra/`: Ubuntu systemd and Nginx deployment examples.
+
+## Development principles
+
+- Keep public content file-based and version-controlled.
+- Prefer YAML, Markdown, JSON, CSV, and BibTeX over a database for editorial data.
+- Keep the public Astro build independent of the dynamic service.
+- Use explicit media metadata for publications; filename matching is only a fallback.
+- Preserve the `e3da-light` and `e3da-dark` themes from `static/src/styles/global.css`.
+- Write portable Node.js using standard APIs so Bun remains a possible future runtime.
+- Do not put credentials, private data, or private media in the static build.
+
+## Public and internal deployments
+
+The source layers are cumulative: `shared/ + static/` is the static website, `shared/ + static/ + dynamic/` is the public website with server-side services, and `shared/ + static/ + dynamic/ + internal/` is the complete internal deployment. GitHub Actions builds only `static/` for GitHub Pages or Cloudflare Pages; it never publishes `dynamic/` or `internal/` as static assets.
+
+The internal site remains a separate Astro SSR deployment on the lab server. When LDAP-backed SSO is available, place an OIDC identity provider in front of LDAP and integrate the server with OIDC rather than handling LDAP passwords in Astro. The package and authorization boundary is documented in `infra/INTERNAL-AUTH.md`.
+
+## Protected files
+
+The internal Astro site exposes `GET /download?group=e3da&file=manuals/example.pdf` for authenticated private files and `group=public` for explicitly public files. Files are resolved from `E3DA_PRIVATE_ROOT`, `UARK_PRIVATE_ROOT`, and `E3DA_PUBLIC_ROOT`, not from the Astro project or GitHub Pages output.
+
+The endpoint rejects unknown groups, unauthenticated private requests, path traversal, symlink escapes, and invalid byte ranges. It supports `?stream=1` for inline PDF/video viewing and otherwise returns an attachment. See `internal/site/.env.example`.
+
+Public software releases can be cataloged with `survey=true` in `dynamic/data/manuals.csv`. The internal `/releases` page sends those users through `/survey`, which records the response as JSON Lines when `SURVEY_LOG_PATH` is set and issues a signed, file-scoped cookie. Members with an active session bypass the survey. Set a long random `SURVEY_SECRET` in production; never use the development fallback there.
+
+## Standalone dynamic site
+
+The standalone Astro service in `internal/site/` provides its own website at `/app`; it does not depend on the GitHub Pages site being online. Run it for development with `npm run dev` in `internal/site/`. In this mode, any non-empty username is accepted and `yrpeng` receives the temporary admin role to mirror the legacy behavior.
+
+The production command sets `NODE_ENV=production`, which disables open login. Before production use, replace the demo identity check with real authentication and persistent sessions. Never deploy the development command to a public server.
+
+The initial table is a semantic HTML table generated from `dynamic/data/teaching.csv`. Tabulator 6.x is the preferred future enhancement for screens that need client-side sorting, filtering, pagination, and responsive columns; it should be loaded only on those screens rather than added globally.
+
+Example service and reverse-proxy files are in `infra/systemd/` and `infra/nginx/`. Replace the example user, paths, domain, and TLS configuration before installation.
+
+## Commands
+
+```sh
+cd static
+npm install
+npm run build
+npm run dev
+
+cd ../dynamic
+npm start
+
+cd ../internal/site
+npm install
+npm run build
+npm run start
+```
+
+The static site is currently the v2 draft baseline. Dynamic routes will be added only after their data and authorization boundaries are defined.
+
+## Headless Ubuntu deployment
+
+Build `internal/site/` with the official `@astrojs/node` adapter and run `node dist/server/entry.mjs` under systemd. Put Nginx or Caddy in front for TLS, static assets, and proxying. Keep the service bound to loopback unless it is intentionally exposed through the reverse proxy. Node.js 22 is the current development baseline; Bun remains a later runtime experiment.

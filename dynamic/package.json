@@ -1,0 +1,14 @@
+{
+  "name": "e3da-v3-dynamic",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Dependency-light dynamic services for the E3DA v3 site",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node src/server.js",
+    "dev": "DEV_OPEN_LOGIN=true node src/server.js"
+  }
+}

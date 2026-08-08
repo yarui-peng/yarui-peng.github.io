@@ -1,0 +1,28 @@
+---
+import LegacyLayout from '../components/LegacyLayout.astro';
+import LegacyPanel from '../components/LegacyPanel.astro';
+import PersonProfile from '../components/PersonProfile.astro';
+import PersonRecord from '../components/PersonRecord.astro';
+import { html, rows } from '../data/legacy';
+
+const faculty = rows('people/Faculty/yrpeng/info.csv');
+const phdStudents = rows('people/Ph.D. Students/mehrans/info.csv');
+const mehran = Object.fromEntries(phdStudents.map((field) => [field[0], field[1]]));
+const graduates = rows('people/alumni/Ph.D. Graduates.csv');
+const masters = rows('people/alumni/Thesis Master Graduates.csv');
+const former = [...rows('people/former students/Honors Research Students.csv'), ...rows('people/former students/REU Students.csv')];
+const facultyInfo = Object.fromEntries(faculty);
+const profileLinks = [
+  { label: 'CV', href: facultyInfo.CV },
+  { label: 'Website', href: facultyInfo.Website },
+  { label: 'Email', href: `mailto:${facultyInfo.Email}@uark.edu` },
+  { label: 'Google', href: facultyInfo.Google },
+];
+---
+
+<LegacyLayout title="People | E3DA Lab">
+  <LegacyPanel title="Faculty" headingLevel={1} tone="primary" id="Faculty"><PersonProfile name={`${facultyInfo.Title} ${facultyInfo.FirstName} ${facultyInfo.LastName}`} image="/img/people/faculty/yrpeng.jpg" links={profileLinks}><Fragment set:html={html('people/Faculty/yrpeng/bio.html')} /></PersonProfile></LegacyPanel>
+  <LegacyPanel title="Ph.D. Students" tone="primary" id="Ph.D. Students"><PersonProfile name={`${mehran.FirstName} ${mehran.LastName}`} image="/img/people/phd/mehrans.jpg" links={[{ label: 'CV', href: '#' }, { label: 'Website', href: '#' }, { label: 'Email', href: '#' }]}><Fragment set:html={html('people/Ph.D. Students/mehrans/bio.txt')} /></PersonProfile></LegacyPanel>
+  <LegacyPanel title="Alumni" tone="primary" id="Alumni"><h3>Ph.D. Graduates</h3>{graduates.map((row) => <PersonRecord name={`${row[1]} ${row[2]}`} affiliation={row[4]} label={row[5]} description={row[6]} period={row[3]} nameHref={`/img/people/alumni/phd/${row[0]}.jpg`} descriptionHref={`/pub/?year=${row[3].slice(0, 4)}&search=Thesis&author=${row[2]}`} />)}<h3>Thesis Master Graduates</h3>{masters.map((row) => <PersonRecord name={`${row[1]} ${row[2]}`} affiliation={row[4]} label={row[5]} description={row[6]} period={row[3]} descriptionHref={`/pub/?year=${row[3].slice(0, 4)}&search=Thesis&author=${row[2]}`} />)}</LegacyPanel>
+  <LegacyPanel title="Former Students" tone="primary" id="Former Students"><h3>Honors Research Students</h3>{former.slice(0, 2).map((row) => <PersonRecord name={`${row[1]} ${row[2]}`} affiliation={row[4]} label={row[5]} description={row[6]} period={row[3]} nameHref={`/img/people/former/honors/${row[0]}.jpg`} />)}<h3>REU Students</h3>{former.slice(2).map((row) => <PersonRecord name={`${row[1]} ${row[2]}`} affiliation={row[4]} label={row[5]} description={row[6]} period={row[3]} nameHref={row[0] === 'yisogai' ? undefined : `/img/people/former/reu/${row[0]}.jpg`} />)}</LegacyPanel>
+</LegacyLayout>

@@ -1,0 +1,47 @@
+---
+import DynamicLayout from '../layouts/DynamicLayout.astro';
+import { appendFile } from 'node:fs/promises';
+import { CreateSurveyToken, SurveyCookieName, SurveyMaxAge } from '../lib/survey';
+
+const Group = (Astro.url.searchParams.get('group') ?? '').toLowerCase();
+const File = Astro.url.searchParams.get('file') ?? '';
+if (Group !== 'public' || !File) return new Response('Not found', { status: 404 });
+
+if (Astro.request.method === 'POST') {
+  const Form = await Astro.request.formData();
+  const Name = String(Form.get('name') ?? '').trim();
+  const Email = String(Form.get('email') ?? '').trim().toLowerCase();
+  const Organization = String(Form.get('organization') ?? '').trim();
+  const Location = String(Form.get('location') ?? '').trim();
+  const Purpose = String(Form.get('purpose') ?? '').trim();
+  const Valid = (Value: string, Minimum: number) => Value.length >= Minimum;
+  if (!Valid(Name, 4) || !/^\S+@\S+\.\S+$/.test(Email) || !Valid(Organization, 4) || !Valid(Location, 4) || !Valid(Purpose, 6) || Purpose.length > 100) return new Response('Invalid survey response', { status: 400 });
+  if (import.meta.env.PROD && !process.env.SURVEY_SECRET) return new Response('Survey is not configured', { status: 503 });
+  if (process.env.SURVEY_LOG_PATH) await appendFile(process.env.SURVEY_LOG_PATH, `${JSON.stringify({ timestamp: new Date().toISOString(), group: Group, file: File, name: Name, email: Email, organization: Organization, location: Location, purpose: Purpose })}\n`);
+  Astro.cookies.set(SurveyCookieName(), CreateSurveyToken(Group, File), { httpOnly: true, sameSite: 'lax', path: '/', secure: import.meta.env.PROD, maxAge: SurveyMaxAge() });
+  return Astro.redirect(`/download?group=${encodeURIComponent(Group)}&file=${encodeURIComponent(File)}&survey=required`);
+}
+---
+
+<DynamicLayout title="Download survey">
+  <section class="mx-auto max-w-xl">
+    <div class="card border border-base-300 bg-base-100 shadow-sm">
+      <div class="card-body">
+        <p class="text-sm font-semibold uppercase tracking-wide text-primary">Software release</p>
+        <h1 class="card-title text-2xl">A short download survey</h1>
+        <p class="text-base-content/70">Tell us a little about how the package will be used. Your response unlocks this download for 30 days.</p>
+        <p class="rounded-box bg-base-200 p-3 font-mono text-sm break-all">{File}</p>
+        <form method="post" action="/survey" class="space-y-3">
+          <input type="hidden" name="group" value={Group} />
+          <input type="hidden" name="file" value={File} />
+          <label class="form-control"><span class="label-text">Name</span><input class="input input-bordered" name="name" required minlength="4" autocomplete="name" /></label>
+          <label class="form-control"><span class="label-text">Email</span><input class="input input-bordered" name="email" type="email" required autocomplete="email" /></label>
+          <label class="form-control"><span class="label-text">Organization</span><input class="input input-bordered" name="organization" required minlength="4" /></label>
+          <label class="form-control"><span class="label-text">Location</span><input class="input input-bordered" name="location" required minlength="4" /></label>
+          <label class="form-control"><span class="label-text">Purpose</span><textarea class="textarea textarea-bordered" name="purpose" required minlength="6" maxlength="100" rows="3" placeholder="A few words about how you will use this package"></textarea></label>
+          <button class="btn btn-primary w-full" type="submit">Submit and download</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</DynamicLayout>

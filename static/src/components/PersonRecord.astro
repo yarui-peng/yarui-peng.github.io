@@ -1,0 +1,22 @@
+---
+interface Props {
+  name: string;
+  affiliation: string;
+  image?: string;
+  label: string;
+  description: string;
+  period: string;
+  nameHref?: string;
+  descriptionHref?: string;
+}
+
+const { name, affiliation, image, label, description, period, nameHref, descriptionHref } = Astro.props;
+---
+
+<article class="person-record">
+  {image && <img class="person-record-image" src={image} alt={name} />}
+  <div>
+    <h5>{nameHref ? <a href={nameHref}>{name}</a> : name}<span class="person-affiliation">{affiliation}</span></h5>
+    <p><strong>{label}:</strong> {descriptionHref ? <a href={descriptionHref}>{description}</a> : description}<time>{period}</time></p>
+  </div>
+</article>

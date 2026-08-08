@@ -1,0 +1,64 @@
+sourceforge
+gds2,"gds2 file format informational software",4
+github
+OpenRAM,"An open-source static random access memory (SRAM) compiler.",1.1.16
+mentor
+amsv,"Analog Mixed-Signal Verification",2021.2
+calibre,"Calibre: IC verification and DFM optimization",2018.2-aoj 2020.4-aoj
+modelsim,"ModelSim: simulates behavioral, RTL, and gate-level code",10.7g 2020.4
+questa,"Questa Prime: simulation engine of the Questa Verification Solution",2020.4
+synopsys
+customcompiler,"Custom Compiler: custom analog, digital, and mixed-signal IC design",20.12
+hspice,"PrimeSim HSPICE: Circuit Simulation",19.06 20.12
+icc2,"IC Compiler II: place and route solution",20.09
+icvalidator,"IC Validator: signoff physical verification solution",20.09
+icv_workbench,"IC Validator WorkBench: hierarchical layout visualization and analysis",20.09
+lc,"Library Compiler: Library timing and power characterization",20.09
+prime,"PrimeTime Static Timing Analysis",20.09
+raphael,"Raphael: 2D and 3D RLC extraction",20.09
+sentaurus,"Synopsys TCAD: process and device simulation",20.09
+siliconsmart,"SiliconSmart: Library and Memory Characterization",20.12
+starrc,"StarRC: Signoff Parasitic Extraction",19.03 20.09
+syn,"Design Compiler: RTL Design and Synthesis",19.03 20.09
+vcs,"VCS: functional verification solution",20.12
+wv,"Custom WaveView: graphical waveform viewer",20.12
+gtcad
+flare,"Flare: Performance driven multiway partitioning",0
+intel
+quartus,"Quartus Prime: Intel FPGA Development Tools",20.1-lite
+cadence
+confrml,"Conformal: equivalence, low-power, and ECO solutions",20.2 23.1
+genus,"Register-transfer level (RTL) and physical synthesis",20.1
+ic,"Virtuoso custom IC layout design tools",23.1 6.1.7 6.1.8
+incisive,"Incisive SystemC, VHDL, and Verilog Simulation",15.2
+innovus,"Innovus Implementation System",17.1 20.1
+liberate,"Liberate Characterization Solution",20.1
+pegasus,"Pegasus Verification System",20.3
+pvs,"Physical Verification System",20.1
+quantus,"Quantus Extraction Solution",20.1
+sigrity,"Sigrity: signal and power integrity (SI/PI) analysis",2019 2021.1
+spb,"Allegro: PCB Design and Analysis",17.2 17.4
+spectre,"Spectre Simulation Platform",20.1 23.1
+ssv,"Silicon Signoff and Verification: Tempus and Voltus",20.1
+stratus,"Stratus High-Level Synthesis",20.2
+xcelium,"Xcelium Logic Simulation",20.09
+misc
+FastFieldSolvers,"FastFieldSolvers: FastCap and FastHenry",stable
+OpenCircuitDesign,"OpenCircuitDesign: Magic and Netgen",stable
+arm
+developmentstudio,"Arm Development Studio: embedded software development",2021.1
+ds5,"Arm DS-5: Community Edition",5.29
+e3da
+ialrazi,"Tools based on Imam Al Razi's Ph.D. work at Uark",RC4 RC5
+test,"Tools under testing",beta
+yrpeng,"",stable test
+keysight
+ads,"ADS: circuit design and simulation software",2021.2
+empro,"EMPro: EM simulation software for analyzing the 3D effects of components",2021.2
+ansys
+electronics,"Electromagnetic, Signal Integrity, Thermal and Electro-Mechanical Simulation Solutions",20.2
+structures,"Structural Analysis & Simulation Software Solutions",20.2
+gnu
+gnuplot,"GNUPlot: command-line driven graphing utility",5.2
+comsol
+multiphysics,"COMSOL Multiphysics: finite element analysis, solver and simulation",6.0 6.1

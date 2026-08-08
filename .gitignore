@@ -1,0 +1,11 @@
+static/dist/
+static/node_modules/
+static/.astro/
+dynamic/node_modules/
+internal/site/node_modules/
+internal/site/dist/
+internal/site/.astro/
+.env
+.env.*
+!.env.example
+*.log

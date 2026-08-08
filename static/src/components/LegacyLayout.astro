@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import LegacyNavigation from './LegacyNavigation.astro';
+
+const { title = 'E3DA Lab' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Energy-Efficient Electronics and Design Automation Lab" />
+    <script is:inline>
+      (() => {
+        const themes = ['e3da-light', 'e3da-dark'];
+        const saved = localStorage.getItem('e3da-theme');
+        document.documentElement.dataset.theme = themes.includes(saved ?? '') ? saved : 'e3da-light';
+      })();
+    </script>
+    <title>{title}</title>
+  </head>
+  <body class="legacy-page bg-base-100 text-base-content">
+    <header class="legacy-navbar navbar fixed top-0 z-50 min-h-14 bg-accent px-3 text-accent-content lg:px-5">
+      <div class="navbar-start">
+        <a class="navbar-brand p-0" href="/" aria-label="E3DA Lab home"><img class="legacy-nav-logo" src="/img/e3da/logo/logo1t.svg" alt="E3DA" /></a>
+      </div>
+      <LegacyNavigation />
+      <div class="navbar-end gap-2">
+        <LegacyNavigation mobile />
+        <button class="btn btn-ghost btn-sm theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+          <span aria-hidden="true">&#9788;</span><span class="theme-toggle-label hidden sm:inline">Light</span>
+        </button>
+        <details class="dropdown dropdown-end hidden lg:block">
+          <summary class="btn btn-ghost btn-sm">Login</summary>
+          <ul class="dropdown-content z-10 mt-3 w-44 rounded-box bg-base-100 p-2 text-base-content shadow"><li><a href="/user/login-uark.php">Login-UARK</a></li><li><a href="/user/login-e3da.php">Login-E3DA</a></li></ul>
+        </details>
+      </div>
+    </header>
+
+    <main class="legacy-container mx-auto px-3 py-4">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<script>
+  const themeButton = document.querySelector<HTMLButtonElement>('.theme-toggle');
+  const themeLabel = themeButton?.querySelector<HTMLElement>('.theme-toggle-label');
+  const themes = ['e3da-light', 'e3da-dark'];
+  const labels = ['Light', 'Midnight'];
+
+  function updateThemeButton(theme: string) {
+    const index = Math.max(0, themes.indexOf(theme));
+    if (themeLabel) themeLabel.textContent = labels[index];
+    if (themeButton) themeButton.querySelector('span')!.textContent = index === 0 ? '\u2600' : '\u263e';
+    themeButton?.setAttribute('aria-label', `Switch color theme (current: ${labels[index]})`);
+  }
+
+  updateThemeButton(document.documentElement.dataset.theme ?? 'e3da-light');
+  themeButton?.addEventListener('click', () => {
+    const current = document.documentElement.dataset.theme ?? 'e3da-light';
+    const next = themes[(themes.indexOf(current) + 1) % themes.length];
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('e3da-theme', next);
+    updateThemeButton(next);
+  });
+</script>

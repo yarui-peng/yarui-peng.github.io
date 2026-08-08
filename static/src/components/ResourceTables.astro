@@ -1,0 +1,24 @@
+---
+import CsvTable from './CsvTable.astro';
+import SoftwareDirectory from './SoftwareDirectory.astro';
+import { rows } from '../data/legacy';
+
+interface Props {
+  kind: 'hardware' | 'software';
+}
+
+const { kind } = Astro.props;
+const tables = kind === 'hardware'
+  ? [
+      ['Computing Server', rows('resource/hardware/server.csv')],
+      ['Acceleration GPU', rows('resource/hardware/gpu.csv')],
+      ['Student Workstation', rows('resource/hardware/workstation.csv')],
+      ['Student Laptop', rows('resource/hardware/laptop.csv')],
+      ['Miscellaneous', rows('resource/hardware/misc.csv')],
+    ]
+  : [];
+---
+
+{kind === 'software'
+  ? <SoftwareDirectory />
+  : tables.map(([title, data]) => <CsvTable title={title} data={data} />)}

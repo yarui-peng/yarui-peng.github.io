@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/lib/e3da/php/header.php';?>
+  </head>
+  <body class="home">
+<?php include "$DocRoot/lib/e3da/php/navi.php";?>
+
+	<!-- Content Start -->
+<div class='container text-justify'>
+<div id="news-top" class="row justify-content-center"><div class="col">
+<h2 class="text-center">Energy-Efficient Electronics and Design Automation (E<sup>3</sup>DA) Lab News</h2>
+<h3>Dr. Yarui Peng has received the <a href='https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047388'>NSF Faculty Early Career Development Award</a> in 2021, known as the NSF CAREER award. </h3>
+<h5>The NSF CAREER award, titled “Chiplet-Package Co-Optimizations for 2.5D Heterogeneous SoCs with Low-Overhead IOs,” is funded by the Software and Hardware Foundations (SHF) of Computing and Communication Foundations (CCF) Division. It provides $500,000 over five years to support Peng’s research and education programs to develop computer-aided design tools, design IC chips, and study methodologies to combine heterogeneous chiplets within a single package, maximizing system performance, density, and power savings with minimum design overhead.</h5>
+<h5>More information about the project can be found at <a href='https://news.uark.edu/articles/56422/csce-assistant-professor-yarui-peng-receives-the-prestigious-nsf-career-award-to-study-design-automation-tools-for-heterogeneous-multi-chiplet-systems'>Uark News</a>.
+
+<!--
+<h3>We will organize the first "Design Methodologies for Power Electronics Conference" (DMC) on 14th-15th July 2021 in Bath, United Kingdom. </h3>
+<h5>This new conference is the flagship conference of the upcmming TC10 in PELS. It is evolved from "Design Automation for Power Electronics - DAPE" workshop previously held in <a href="https://e3da.csce.uark.edu/dape/2018/">Portland, United States (2018)</a> and <a href="https://e3da.csce.uark.edu/dape/2019/">Genova, Italy (2019)</a>. More information will can be found at the <a href="https://attend.ieee.org/dmc-2021/">DMC website</a>.</h5>
+-->
+</div></div>
+
+<div id="news-gra" class="row justify-content-center"><div class="col">
+<h3 >Graduate RA Openings</h3>
+<h5>A PH.D. GRA position in computer-aided design and analysis of multi-chip heterogenous 2.5D chiplet design is available at this time, starting from 2021 Fall. A strong background in programming and algorithm designs is required. C/C++ programming and VHDL/Verilog design skills are also required. CAD/EDA software skills (From Cadence/Synopsys/Mentor Graphics, not from CAE areas such as AutoCAD), matlab/perl/python programming, digital/analog circuit design experience and VLSI physical design experience are strongly preferred.</h5>
+
+<h5>A PH.D. GRA position in computer-aided design and machine learning modeling for power electronics is available at this time, starting from 2021 Fall. A strong background in programming and algorithm designs is required. Circuit design and simulations skills are also required. Power electronics design, packaging, and power system design and simulation experiences are strongly preferred. Familiar with linux usage, machine learning algorithms, nerual network frameworks is a plus. </h5>
+
+<p>All CSCE Ph.D RAs receive a standard monthly stipend of $1,720 (An annual stipend of $20,640) with a tuition waiver (Annual 15 credits * $512/$1168 for in-state/non resident) For exceptional outstanding applicants, I can recommend you for DDF and DAF fellowships from graduate school. They offer an additional annual stipend of $22,000 (DDF) and $12,000 (DAF) to cover your living expenses. For these fellowships, US citizens are preferred (international students may still apply for DAF) and an early application is required (By Jan for Fall applications, and by Sep for Spring applications) and the slots are filled very quickly. For more information about our program and financial assistance, refer to <a href="https://computer-science-and-computer-engineering.uark.edu/academics/graduate/index.php">CSCE Graudate Academic Homepage</a> and <a href="https://graduate-and-international.uark.edu/graduate/costs-and-funding/doctoral-fellowships.php">Graduate School Fellowship Webpage</a>. </p>
+<p>Interested candidates please send me your CV and transcript for review, including your TOFEL and GRE scores as well. Make sure you have read our <a href="http://e3da.csce.uark.edu/pub">publications</a> in related areas before you apply. </p>
+</div></div>
+
+<div id="news-ug" class="row justify-content-center"><div class="col">
+<h3>POETS REU Openings</h3>
+
+<h5><a href="https://poets-erc.org/">POETS</a> is looking for undergraduate students with research interests in power electroincs to join our research teams at UIUC, UA, Stanford, and Howard University. Should a student be selected for the REU experience, they could go to either one of those top schools and conduct research during a 10-week time frame. All exciting opportunities, which will be supported financially with travel and living expenses. Students are also funded for attendance to the annual POETS meeting where they will get to present their research.</h5>
+
+The POETS REU website <a href="https://poets-erc.org/reu">https://poets-erc.org/reu</a> gives interested students a good overview of what to expect from the POETS REU program. Several of our <a href="https://e3da.csce.uark.edu/people/#Former%20Students">previous students</a> are supported under this program. POETS is using the NSF REU portal to accept applications this year. The actual application materials will be uploaded and submitted through <a href="https://www.nsfreu.org/">this page</a>. As the POETS site explains, although the application deadline is February 15th, spots are limited and participants will be accepted on a rolling basis, so the sooner students apply, the better their chances are of being accepted.
+</div></div>
+
+<div id="news-hourly" class="row justify-content-center"><div class="col">
+<h3>Hourly Student Openings</h3>
+<h5>We have an opening for a senior/master level student who are familar with webpage design, php/javascript, and linux usage to work on a website development for running our research tool PowerSynth as a service, starting from 2021 Fall. The student will be paid on a hourly basis, and will be considered for a research assistant position. Getting an A on Programming Paradigms is strongly preferred. </h5>
+
+<h5>Another hourly position in electro/thermal modeling and layout optimization for electro-migration (EM) is available at this time, starting from 2021 Fall. Experience in related fields is strong prefered, including circuit, thermal, and stress modeling and simulation. Students from electrical engineering, computer science and computer engineering or mechanical engineering are welcome to apply. Strong math/physics background including numerical analysis and simulation skill is a plus. </h5>
+
+<p>Depending on the skill sets and academic levels, all hourly students will be paid at $12-14 (undergrad) $15-16 (master) hourly rate based on the committed time. I can help with your reference letter for your future education applications. A good academic standing (GPA 3.4+) is required. Getting an A in related courses with interests in our research fields are strongly prefered. If there are mutual matching interests in the research projects, RA position is also an option. </p>
+
+<!--
+<h3 id="News-REU">Undergrad REU Openings</h3>
+
+<h5>An undergrad REU position in design and analysis of power electronics is available at this time. Starting from 2021 Spring or Fall. Junior/Senior level students with a background in Electrical Engineering, Computer Engineering, or Computer Science with an interest in pursuing graduate study in related areas are preferred. A strong programming skill and related coursework in circuit and algorithm design are required. </h5>
+<h5>Another undergrad REU position in an webpage fron-end and GUI interface design is available at this time. Starting from 2021 Summer. Junior/Senior level students with a background in Computer Engineering, Computer Science, or Electrical Engineering, with previous experience in web or GUI design are preferred. A strong programming skill in one of the web design languages (JavaScript, PHP, HTML) or related experience in python or Java and related coursework in programming paradiams or software engineering are required. </h5>
+Depending on the funding source and your schedule, undergrad RAs may receive a stipend of roughly $5,000 per semester (20 hour per week in Spring/Fall semester or 40 hour per week in Summer semester) or $12-13 per committed hour. I can help with your reference letter if you choose to go to graduate school. A good academic standing (GPA 3.5+) is required. You must have obtained an A in one of <a href="http://e3da.csce.uark.edu/teaching/">my courses</a> or a core course in my research area such as CSCE3953: System Synthesis and Modeling, CSCE3193: Programming Paradigms, ELEG3933: Circuits and Electronics, CSCE4133: Algorithms, and CSCE4213: Computer Architecture. Interested students send me your resume and transcript for review.
+!-->
+</div></div>
+
+</div>
+ 
+</body>
+</html>

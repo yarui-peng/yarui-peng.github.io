@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+
+# Software installers are served by the dynamic release service, not GitHub Pages.
+src/data/legacy/resource/software/*.exe
+src/data/legacy/resource/software/*.zip
+src/data/legacy/resource/software/*.tgz
+src/data/legacy/resource/ssh/*.mxtsessions

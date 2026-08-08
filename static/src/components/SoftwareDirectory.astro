@@ -1,0 +1,42 @@
+---
+import LegacyPanel from './LegacyPanel.astro';
+import { groupRows, rows } from '../data/legacy';
+
+const categories = groupRows(rows('resource/software/tool.csv'));
+const developmentCategories = groupRows(rows('resource/software/dev.csv'));
+
+const sections = [
+  { title: 'CAD Tools', tone: 'primary' as const, description: 'Design, verification, simulation, and implementation tools used across the lab.', groups: categories },
+  { title: 'Development Tools', tone: 'success' as const, description: 'Compilers, languages, runtimes, and developer platforms available to the lab.', groups: developmentCategories },
+];
+---
+
+<div class="software-directory">
+  {sections.map((section) => (
+    <LegacyPanel title={section.title} tone={section.tone}>
+      <p class="software-section-description">{section.description}</p>
+      <div class="software-category-list">
+        {section.groups.map((group) => (
+          <section class="software-category" aria-labelledby={`${section.title.replaceAll(' ', '-')}-${group.name}-title`}>
+            <h3 id={`${section.title.replaceAll(' ', '-')}-${group.name}-title`}>{group.name}</h3>
+            {group.rows.length > 0 ? (
+              <div class="software-tool-grid">
+                {group.rows.map(([name, description, version]) => (
+                  <article class="software-tool">
+                    <div class="software-tool-heading">
+                      <h4>{name}</h4>
+                      {version && <span class="software-version">{version}</span>}
+                    </div>
+                    {description && <p>{description}</p>}
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <p class="software-empty">No individual tools listed.</p>
+            )}
+          </section>
+        ))}
+      </div>
+    </LegacyPanel>
+  ))}
+</div>

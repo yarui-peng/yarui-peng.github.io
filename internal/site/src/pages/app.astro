@@ -1,0 +1,36 @@
+---
+import DynamicLayout from '../layouts/DynamicLayout.astro';
+import { ReadTeachingRecords } from '../lib/teaching';
+
+if (!Astro.locals.Session) return Astro.redirect('/login');
+const Records = await ReadTeachingRecords();
+const Headings = Records.length ? Object.keys(Records[0]) : [];
+---
+
+<DynamicLayout title="Dashboard">
+  <div class="space-y-4">
+    <section class="card border border-base-300 bg-base-100 shadow-sm">
+      <div class="card-body">
+        <h1 class="card-title text-2xl">Member dashboard</h1>
+        <p>Welcome, <strong>{Astro.locals.Session.Username}</strong>.</p>
+        <p class="text-base-content/70">This is an independent Astro website served by the dynamic deployment.</p>
+      </div>
+    </section>
+
+    <section class="card border border-base-300 bg-base-100 shadow-sm">
+      <div class="card-body">
+        <h2 class="card-title">Teaching records</h2>
+        {Records.length ? <div class="overflow-x-auto"><table class="table table-zebra"><thead><tr>{Headings.map((Heading) => <th>{Heading}</th>)}</tr></thead><tbody>{Records.map((Record) => <tr>{Headings.map((Heading) => <td>{Record[Heading]}</td>)}</tr>)}</tbody></table></div> : <p class="text-base-content/70">No teaching records yet.</p>}
+      </div>
+    </section>
+
+    <section class="card border border-base-300 bg-base-100 shadow-sm">
+      <div class="card-body sm:flex-row sm:items-center sm:justify-between">
+        <div><h2 class="card-title">Software manuals</h2><p class="text-base-content/70">Authenticated access to cataloged manuals and private files.</p></div>
+        <a class="btn btn-primary" href="/manuals">Browse manuals</a>
+      </div>
+    </section>
+
+    {Astro.locals.Session.IsAdmin && <section class="card border border-success/40 bg-base-100 shadow-sm"><div class="card-body"><h2 class="card-title">Administration</h2><p class="text-base-content/70">The development identity <code>yrpeng</code> currently receives the admin role. Add real authentication and explicit role storage before deployment.</p></div></section>}
+  </div>
+</DynamicLayout>

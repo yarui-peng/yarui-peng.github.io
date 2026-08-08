@@ -1,0 +1,21 @@
+@import "tailwindcss" source(none);
+@source "../pages";
+@source "../components";
+@import "./e3da-themes.css";
+@import "./site.css";
+
+@theme {
+  --font-display: ui-sans-serif, system-ui, sans-serif;
+  --font-body: ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+  }
+}

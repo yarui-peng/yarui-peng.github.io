@@ -1,0 +1,10 @@
+@import "tailwindcss" source(none);
+@source "../pages";
+@source "../components";
+@import "../../../../shared/e3da-themes.css";
+@import "../../../../shared/site.css";
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { font-family: ui-sans-serif, system-ui, sans-serif; }
+}

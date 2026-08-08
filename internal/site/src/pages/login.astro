@@ -1,0 +1,34 @@
+---
+import DynamicLayout from '../layouts/DynamicLayout.astro';
+import { CreateSession, IsDevelopmentOpenLoginEnabled } from '../lib/auth';
+
+let ErrorMessage = '';
+if (Astro.request.method === 'POST') {
+  const Form = await Astro.request.formData();
+  const Username = String(Form.get('username') ?? '').trim().toLowerCase();
+  if (!IsDevelopmentOpenLoginEnabled()) ErrorMessage = 'Login is not configured for this environment.';
+  else if (!Username) ErrorMessage = 'Enter a username.';
+  else {
+    Astro.cookies.set('E3DASession', CreateSession(Username), { httpOnly: true, sameSite: 'lax', path: '/', secure: import.meta.env.PROD, maxAge: 60 * 60 * 8 });
+    return Astro.redirect('/app');
+  }
+}
+---
+
+<DynamicLayout title="Login">
+  <section class="mx-auto max-w-md">
+    <div class="card border border-base-300 bg-base-100 shadow-sm">
+      <div class="card-body">
+        <h1 class="card-title text-2xl">Dynamic site login</h1>
+        <p class="text-base-content/70">Member and teaching services are hosted separately from the public site.</p>
+        {IsDevelopmentOpenLoginEnabled() && <div class="alert alert-warning text-sm">Development mode: any non-empty username is accepted. Disable this before production.</div>}
+        {ErrorMessage && <div class="alert alert-error">{ErrorMessage}</div>}
+        <form method="post" class="mt-2">
+          <label class="form-control"><span class="label-text">Username</span><input class="input input-bordered" name="username" autocomplete="username" required /></label>
+          <label class="form-control mt-3"><span class="label-text">Password</span><input class="input input-bordered" name="password" type="password" autocomplete="current-password" required /></label>
+          <button class="btn btn-primary mt-5" type="submit">Log in</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</DynamicLayout>

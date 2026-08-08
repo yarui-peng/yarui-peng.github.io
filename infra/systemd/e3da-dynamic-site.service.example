@@ -1,0 +1,25 @@
+[Unit]
+Description=E3DA dynamic Astro site
+After=network.target
+
+[Service]
+Type=simple
+User=e3da
+Group=e3da
+WorkingDirectory=/srv/e3da/v3/internal/site
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=8880
+Environment=E3DA_PRIVATE_ROOT=/srv/e3da/private/e3da
+Environment=UARK_PRIVATE_ROOT=/srv/e3da/private/uark
+Environment=E3DA_PUBLIC_ROOT=/srv/e3da/public
+ExecStart=/usr/bin/node /srv/e3da/v3/internal/site/dist/server/entry.mjs
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/srv/e3da/v3/internal/site/.astro
+
+[Install]
+WantedBy=multi-user.target

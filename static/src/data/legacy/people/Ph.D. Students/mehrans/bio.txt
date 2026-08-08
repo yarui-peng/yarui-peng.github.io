@@ -1,0 +1,4 @@
+Mehran Sanjabiasasi joined in Computer Science and Computer Engineering department at the University of Arkansas in 2023 as a Ph.D. student. He received the B.S. in electrical engineering from the Islamic Azad University Bojnourd Branch, Bojnourd, Iran, in 2008, and the M.S. degree from the Islamic Azad University South Tehran Branch, Tehran, Iran, in 2013.
+His research interests include power systems operation and planning, design automation and optimization tools for power electronics modules as well as the implementation of Artificial Intelligence (AI), machine learning and optimization algorithms in electrical engineering. 
+Currently, he is working as a POETS (Power Optimization of Electro-Thermal Systems) student on Power Electronics CAD. He is developing and implementing machine learning and optimization algorithms for Computer Aided Design (CAD) tool for power electronic modules. 
+

@@ -1,0 +1,72 @@
+---
+import type { Publication } from '../data/legacy';
+
+interface Props {
+  entries: Publication[];
+  emptyMessage?: string;
+}
+
+const { entries, emptyMessage = 'No publications match this filter.' } = Astro.props;
+
+function publicationDetails(entry: Publication): string[] {
+  const details: string[] = [];
+  if (entry.type === 'phdthesis' && entry.school) details.push(`Ph.D. dissertation, ${entry.school}`);
+  if (entry.type === 'mastersthesis' && entry.school) details.push(`M.S. thesis, ${entry.school}`);
+  if (entry.type === 'bachelorsthesis' && entry.school) details.push(`B.S. thesis, ${entry.school}`);
+  if (entry.publisher) details.push(entry.publisher);
+  if (entry.volume) details.push(`vol. ${entry.volume}`);
+  if (entry.number) details.push(`no. ${entry.number}`);
+  if (entry.pages) details.push(`pp. ${entry.pages}`);
+  if (entry.month) details.push(`${entry.month} ${entry.year}`);
+  else if (entry.year) details.push(entry.year);
+  return details;
+}
+
+function authorMarkup(entry: Publication): string {
+  return entry.authors.map((author, index) => {
+    const separator = index === 0 ? '' : index === entry.authors.length - 1 ? ', and ' : ', ';
+    const name = author.href ? `<a class="bibhomepage" href="${author.href}">${author.name}</a>` : author.name;
+    return `${separator}${name}`;
+  }).join('');
+}
+---
+
+<div class="publication-list bibbrowser-list">
+  {entries.length === 0 && <p class="publication-empty">{emptyMessage}</p>}
+  {entries.map((entry) => <article class="publication-entry bibitem" data-publication-type={entry.type.toLowerCase()} data-publication-year={entry.year} data-publication-search={[entry.type, entry.title, entry.author, entry.venue, entry.note ?? ''].join(' ').toLowerCase()} data-publication-author={entry.author.toLowerCase()}>
+    {entry.author && <span class="publication-authors bibauthor" set:html={`${authorMarkup(entry)}, `} />}
+    <span class="publication-title bibtitle">{entry.url ? <a href={entry.url}>&ldquo;{entry.title}&rdquo;</a> : <>&ldquo;{entry.title}&rdquo;</>}</span>
+    {entry.venue && <span class="publication-venue bibbooktitle">, {entry.type === 'inproceedings' && entry.booktitle ? `in Proc. ${entry.booktitle}` : entry.venue}</span>}
+    {publicationDetails(entry).map((detail) => <span class="publication-detail">, {detail}</span>)}{entry.note && <span class="publication-note">, {entry.note}</span>}.
+    <div class="publication-links">
+      {entry.doi && <a href={`https://doi.org/${entry.doi}`}>DOI</a>}
+    </div>
+  </article>)}
+</div>
+
+<script>
+  const list = document.querySelector('.bibbrowser-list');
+  const entries = [...(list?.querySelectorAll<HTMLElement>('[data-publication-type]') ?? [])];
+  const params = new URLSearchParams(window.location.search);
+  const types = (params.get('type') ?? '').toLowerCase().split('|').filter(Boolean);
+  const year = params.get('year');
+  const search = params.get('search')?.toLowerCase() ?? '';
+  const author = params.get('author')?.toLowerCase() ?? '';
+  let visible = 0;
+
+  for (const entry of entries) {
+    const matches = (!types.length || types.includes(entry.dataset.publicationType ?? ''))
+      && (!year || entry.dataset.publicationYear === year)
+      && (!search || (entry.dataset.publicationSearch ?? '').includes(search))
+      && (!author || (entry.dataset.publicationAuthor ?? '').includes(author));
+    entry.hidden = !matches;
+    if (matches) visible += 1;
+  }
+
+  if (entries.length && !visible) {
+    const empty = document.createElement('p');
+    empty.className = 'publication-empty';
+    empty.textContent = 'No publications match this filter.';
+    list?.prepend(empty);
+  }
+</script>

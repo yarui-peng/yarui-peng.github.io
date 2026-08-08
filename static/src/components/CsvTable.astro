@@ -1,0 +1,22 @@
+---
+import LegacyPanel from './LegacyPanel.astro';
+
+interface Props {
+  title?: string;
+  data: string[][];
+}
+
+const { title, data } = Astro.props;
+const columnCount = Math.max(...data.map((row) => row.length), 1);
+---
+
+<LegacyPanel title={title ?? 'Data'}>
+  <div class="table-scroll" role="region" aria-label={`${title ?? 'Data'} table`} tabindex="0">
+    <table class="table table-zebra legacy-data-table">
+      <tbody>{data.map((row) => row.length === 1
+        ? <tr class="table-section-row"><th colspan={columnCount}>{row[0]}</th></tr>
+        : <tr>{row.map((cell) => <td>{cell}</td>)}</tr>
+      )}</tbody>
+    </table>
+  </div>
+</LegacyPanel>

@@ -1,0 +1,21 @@
+---
+import DynamicLayout from '../layouts/DynamicLayout.astro';
+import { ReadManuals } from '../lib/manuals';
+
+if (!Astro.locals.Session) return Astro.redirect('/login');
+const Manuals = (await ReadManuals()).filter((Manual) => Manual.group !== 'public');
+---
+
+<DynamicLayout title="Software manuals">
+  <div class="space-y-4">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-primary">Member files</p>
+        <h1 class="text-3xl font-bold">Software manuals</h1>
+      </div>
+      <a class="btn btn-ghost btn-sm" href="/app">Back to dashboard</a>
+    </div>
+
+    {Manuals.length ? <div class="overflow-x-auto rounded-box border border-base-300 bg-base-100 shadow-sm"><table class="table table-zebra"><thead><tr><th>Title</th><th>Category</th><th>Description</th><th>Access</th></tr></thead><tbody>{Manuals.map((Manual) => <tr><td class="font-medium">{Manual.title}</td><td>{Manual.category}</td><td class="max-w-md">{Manual.description}</td><td><div class="flex flex-wrap gap-2"><a class="btn btn-primary btn-sm" href={`/download?group=${encodeURIComponent(Manual.group)}&file=${encodeURIComponent(Manual.file)}`}>Download</a>{Manual.streamable === 'true' && <a class="btn btn-outline btn-sm" href={`/download?group=${encodeURIComponent(Manual.group)}&file=${encodeURIComponent(Manual.file)}&stream=1`}>Open</a>}</div></td></tr>)}</tbody></table></div> : <div class="alert border border-base-300 bg-base-100"><span>No manuals have been cataloged yet.</span></div>}
+  </div>
+</DynamicLayout>

@@ -1,0 +1,3 @@
+title,category,group,file,description,streamable,survey
+Example software manual,Software manuals,e3da,manuals/example.pdf,Replace this catalog row with a real protected file path.,true,false
+Example software package,Software packages,public,releases/example.tar.gz,Replace this catalog row with a public package path.,false,true

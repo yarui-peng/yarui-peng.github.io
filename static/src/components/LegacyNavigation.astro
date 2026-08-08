@@ -1,0 +1,87 @@
+---
+const navigation = [
+  { label: 'News', href: '/news/', items: ['Recent News'] },
+  { label: 'Research', href: '/research/', items: ['Overview', 'Power-CAD', 'VLSI-CAD'] },
+  { label: 'Teaching', href: '/teaching/', items: ['Overview'] },
+  { label: 'People', href: '/people/', items: ['Faculty', 'Ph.D. Students', 'Master Students', 'Alumni', 'Former Students'] },
+  { label: 'Publication', href: '/pub/', items: ['Overview', 'Journal', 'Conference', 'Thesis'] },
+  { label: 'Resource', href: '/resource/', items: ['Hardware', 'Software'] },
+];
+
+const peopleAnchors: Record<string, string> = {
+  Faculty: '#Faculty',
+  'Ph.D. Students': '#Ph.D.%20Students',
+  'Master Students': '#Master%20Students',
+  Alumni: '#Alumni',
+  'Former Students': '#Former%20Students',
+};
+
+const researchAnchors: Record<string, string> = {
+  Overview: '#Overview',
+  'Power-CAD': '#Power-CAD',
+  'VLSI-CAD': '#VLSI-CAD',
+};
+
+const publicationQueries: Record<string, string> = {
+  Overview: '',
+  Journal: '?type=article',
+  Conference: '?type=inproceedings|conference',
+  Thesis: '?type=phdthesis|mastersthesis|bachelorsthesis',
+};
+
+function submenuHref(label: string, href: string, subitem: string): string {
+  if (label === 'Resource') return `/resource/${subitem.toLowerCase()}/`;
+  if (label === 'People') return href + peopleAnchors[subitem];
+  if (label === 'Research') return href + researchAnchors[subitem];
+  if (label === 'Publication') return href + publicationQueries[subitem];
+  return href;
+}
+
+const { mobile = false } = Astro.props;
+---
+
+{mobile ? <div class="dropdown dropdown-end lg:hidden">
+  <button class="btn btn-ghost btn-square text-xl" aria-label="Open navigation">&#9776;</button>
+  <ul class="menu dropdown-content z-10 mt-3 w-60 rounded-box bg-base-100 p-2 text-base-content shadow">{navigation.map((item) => <li>
+    {item.items ? <details><summary>{item.label}</summary><ul>{item.items.map((subitem) => <li><a href={submenuHref(item.label, item.href, subitem)}>{subitem}</a></li>)}</ul></details> : <a href={item.href}>{item.label}</a>}
+  </li>)}</ul>
+</div> : <nav class="navbar-center hidden lg:flex" aria-label="Main navigation">
+  <ul class="menu menu-horizontal px-1">
+    {navigation.map((item) => <li>
+      {item.items ? <details><summary>{item.label}</summary><ul class="dropdown-content z-10 mt-3 w-56 bg-base-100 p-2 text-base-content shadow">{item.items.map((subitem) => <li><a href={submenuHref(item.label, item.href, subitem)}>{subitem}</a></li>)}</ul></details> : <a href={item.href}>{item.label}</a>}
+    </li>)}
+  </ul>
+</nav>}
+
+<script>
+  const desktopNavigation = window.matchMedia('(min-width: 1024px)');
+
+  function updateDesktopDropdowns() {
+    document.querySelectorAll<HTMLElement>('.legacy-navbar nav details').forEach((dropdown) => {
+      if (desktopNavigation.matches) {
+        dropdown.addEventListener('mouseenter', openDropdown);
+        dropdown.addEventListener('mouseleave', closeDropdown);
+        dropdown.querySelector('summary')?.addEventListener('click', preventDesktopToggle);
+      } else {
+        dropdown.removeEventListener('mouseenter', openDropdown);
+        dropdown.removeEventListener('mouseleave', closeDropdown);
+        dropdown.querySelector('summary')?.removeEventListener('click', preventDesktopToggle);
+      }
+    });
+  }
+
+  function openDropdown(event: Event) {
+    (event.currentTarget as HTMLDetailsElement).open = true;
+  }
+
+  function closeDropdown(event: Event) {
+    (event.currentTarget as HTMLDetailsElement).open = false;
+  }
+
+  function preventDesktopToggle(event: Event) {
+    if (desktopNavigation.matches) event.preventDefault();
+  }
+
+  updateDesktopDropdowns();
+  desktopNavigation.addEventListener('change', updateDesktopDropdowns);
+</script>

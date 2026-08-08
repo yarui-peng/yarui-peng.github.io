@@ -1,0 +1,18 @@
+sdk
+dotnet,".NET applications and libraries",6.0
+go,"Go Programming Language",1.15 1.17
+icc,"Intel Compiler: Parallel Studio Cluster Edition",19.1
+intel,"Intel Parallel Studio Cluster Edition",2020.4
+java,"Java: OpenJDK Development Kit",11
+matlab,"Matlab: programming and numeric computing platform",R2021a R2022b
+node,"NodeJS: JavaScript runtime environment",10
+perl,"Perl Programming Language",5.30
+python,"Python Programming Language",3.8
+qt,"QT: Cross-platform software GUI library and tools",5.15 6.2
+rust,"Rust Programming Language",1.47 1.49
+cc
+gcc,"GCC: the GNU Compiler Collection",9
+llvm,"LLVM: Compiler Infrastructure",10 11
+dist
+anaconda,"Anaconda: Python Data Science Platform",21.05 22.10
+texlive,"Texlive: Official TeX distribution",2021
