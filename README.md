@@ -27,6 +27,7 @@ This is the next-generation draft site. The legacy website, v1, and v2 are prese
 
 These decisions are part of the project requirements and should be preserved when extending v3:
 
+- Treat this README as the living project reference. When a style choice, visual direction, architecture decision, deployment rule, security constraint, dependency policy, or general guideline changes, update this document in the same change so future work can follow the current intent.
 - The public frontend uses Astro, Tailwind CSS, and daisyUI. Keep the existing `e3da-light` and `e3da-dark` themes: light is primarily blue, while dark is primarily dark purple and navy.
 - Prefer current, maintained tools with few dependencies. Use the existing Node.js 22 baseline and standard APIs where practical; consider Bun or Go only for a focused service where they provide a clear benefit.
 - The legacy PHP/Bootstrap website, v1, and v2 are reference material. Do not modify them during v3 work, and do not copy legacy private data into a public build.
