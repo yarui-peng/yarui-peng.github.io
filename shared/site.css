@@ -196,6 +196,7 @@ a {
   border-radius: 0.375rem 0.375rem 0 0;
   background: var(--color-secondary);
   color: var(--color-secondary-content);
+  justify-content: center;
   text-align: center !important;
 }
 
