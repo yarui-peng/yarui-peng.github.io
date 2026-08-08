@@ -29,6 +29,10 @@ These decisions are part of the project requirements and should be preserved whe
 
 - Treat this README as the living project reference. When a style choice, visual direction, architecture decision, deployment rule, security constraint, dependency policy, or general guideline changes, update this document in the same change so future work can follow the current intent.
 - The public frontend uses Astro, Tailwind CSS, and daisyUI. Keep the existing `e3da-light` and `e3da-dark` themes: light is primarily blue, while dark is primarily dark purple and navy.
+- Use web-safe fonts only. Prefer the existing system font stack or another explicit web-safe stack; do not add remote font services or font packages without a clear project-wide reason.
+- Keep text and controls clearly separated from their backgrounds in both themes. Target at least WCAG AA contrast for normal text (4.5:1) and never rely on color alone to communicate an action, state, or distinction. Check foreground, background, borders, hover states, and focus states in both `e3da-light` and `e3da-dark`.
+- Keep information compact without making it crowded. Use stable spacing, readable line height, and compact controls; let content wrap or reflow before it overlaps, clips, or creates horizontal page overflow.
+- Design every shared component for desktop and mobile. Preserve the intended information hierarchy at narrow widths, keep repeated content easy to scan, and verify both themes at a desktop and mobile viewport before finishing a UI change.
 - Prefer current, maintained tools with few dependencies. Use the existing Node.js 22 baseline and standard APIs where practical; consider Bun or Go only for a focused service where they provide a clear benefit.
 - The legacy PHP/Bootstrap website, v1, and v2 are reference material. Do not modify them during v3 work, and do not copy legacy private data into a public build.
 - Keep editorial and catalog data human-editable and file-based: Markdown, YAML, JSON, CSV, and BibTeX are preferred before introducing a database.
