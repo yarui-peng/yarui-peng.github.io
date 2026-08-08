@@ -169,6 +169,7 @@ a {
   border-bottom: 2px solid var(--e3da-success);
   color: var(--e3da-primary-dark);
   line-height: 1.2;
+  text-align: center;
 }
 
 .legacy-card > .card-body > h2 {
@@ -223,6 +224,7 @@ a {
   margin-top: 0.25rem;
   color: var(--e3da-primary-dark);
   font-size: 1.15rem;
+  text-align: center;
 }
 
 .teaching-course-term {
