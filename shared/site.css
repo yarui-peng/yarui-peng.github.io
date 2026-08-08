@@ -461,7 +461,7 @@ a {
 }
 
 .current-student-grid .person-profile {
-  grid-template-columns: minmax(5rem, 7rem) 1fr;
+  grid-template-columns: 5rem 1fr;
   gap: 1rem;
   min-width: 0;
   padding: 1rem;
@@ -470,20 +470,18 @@ a {
 }
 
 .current-student-grid .person-profile-image {
-  max-width: 7rem;
+  max-width: 5rem;
 }
 
 .current-student-grid .person-profile-heading h3 {
   font-size: 1.2rem;
 }
 
-.current-student-bio {
-  margin: 0.65rem 0 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
+.current-student-grid .person-profile-heading {
+  min-height: 0;
 }
 
-.current-student-year {
+.current-student-grid .person-profile-badge {
   display: inline-block;
   margin-top: 0.25rem;
   border: 1px solid var(--e3da-time-border);
@@ -494,6 +492,19 @@ a {
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1.2;
+}
+
+.current-student-grid .person-actions {
+  position: static;
+  width: max-content;
+  max-width: 100%;
+  margin-top: 0.65rem;
+}
+
+.current-student-bio {
+  margin: 0.65rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 @media (max-width: 50rem) {

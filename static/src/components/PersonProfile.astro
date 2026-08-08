@@ -9,9 +9,10 @@ interface Props {
   image?: string;
   email?: string;
   links?: LinkItem[];
+  badge?: string;
 }
 
-const { name, image, email, links = [] } = Astro.props;
+const { name, image, email, links = [], badge } = Astro.props;
 ---
 
 <article class="person-profile">
@@ -19,6 +20,7 @@ const { name, image, email, links = [] } = Astro.props;
   <div class="person-profile-content">
     <div class="person-profile-heading">
       <h3>{name}</h3>
+      {badge && <span class="person-profile-badge">{badge}</span>}
       {email && <a class="person-email" href={`mailto:${email}`}>{email}</a>}
       {links.length > 0 && <div class="person-actions">{links.map((link) => <a class="person-action" href={link.href}>{link.label}</a>)}</div>}
     </div>
