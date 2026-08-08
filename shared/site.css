@@ -170,7 +170,7 @@ a {
 
 .research-gallery-item {
   display: block;
-  flex: 0 0 min(78%, 16rem);
+  flex: 0 0 auto;
   overflow: hidden;
   border: 1px solid var(--e3da-line);
   border-radius: 0.35rem;
