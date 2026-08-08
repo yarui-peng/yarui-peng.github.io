@@ -10,7 +10,7 @@ interface Props {
 const { title, id, headingLevel = 2, tone = 'success', class: className = '' } = Astro.props;
 ---
 
-<section id={id} class:list={['legacy-card', 'card', 'border', 'border-base-300', 'bg-base-100', 'shadow-sm', `legacy-card-${tone}`, 'mb-3', className]}>
-  {headingLevel === 1 ? <h1 class:list={['legacy-card-header', 'card-title', 'px-5', 'py-3', 'text-center', tone === 'primary' ? 'bg-primary text-primary-content' : 'bg-secondary text-secondary-content']}>{title}</h1> : <h2 class:list={['legacy-card-header', 'card-title', 'px-5', 'py-3', 'text-center', tone === 'primary' ? 'bg-primary text-primary-content' : 'bg-secondary text-secondary-content']}>{title}</h2>}
+<section id={id} class:list={['legacy-card', 'card', 'border', 'border-base-300', 'bg-base-100', 'shadow-sm', 'transition-shadow', 'duration-200', 'hover:shadow-md', 'motion-reduce:transition-none', `legacy-card-${tone}`, 'mb-3', className]}>
+  {headingLevel === 1 ? <h1 class:list={['legacy-card-header', 'card-title', 'px-5', 'py-3', 'text-center', 'transition', 'duration-200', 'hover:brightness-110', 'motion-reduce:transition-none', tone === 'primary' ? 'bg-primary text-primary-content' : 'bg-secondary text-secondary-content']}>{title}</h1> : <h2 class:list={['legacy-card-header', 'card-title', 'px-5', 'py-3', 'text-center', 'transition', 'duration-200', 'hover:brightness-110', 'motion-reduce:transition-none', tone === 'primary' ? 'bg-primary text-primary-content' : 'bg-secondary text-secondary-content']}>{title}</h2>}
   <div class="card-body"><slot /></div>
 </section>
