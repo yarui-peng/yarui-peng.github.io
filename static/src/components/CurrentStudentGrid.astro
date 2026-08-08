@@ -17,18 +17,20 @@ const degreeGroups: CurrentStudent['degree'][] = ['Ph.D.', 'MS', 'BS'];
 
   return <section class="current-student-group" aria-labelledby={`current-students-${degree}`}>
     <h3 id={`current-students-${degree}`}>{degree} Students</h3>
-    {group.map((student) => {
-      return <PersonProfile
-        name={student.name}
-        image={student.imagePath}
-        links={[
-          { label: 'Email', href: `mailto:${student.email}` },
-          { label: 'Personal site', href: student.websiteUrl },
-        ]}
-      >
-        <span class="current-student-year">{student.entryYear}</span>
-        <p class="current-student-bio">{currentStudentBios[student.e3daId]}</p>
-      </PersonProfile>;
-    })}
+    <div class="current-student-grid">
+      {group.map((student) => {
+        return <PersonProfile
+          name={student.name}
+          image={student.imagePath}
+          links={[
+            { label: 'Email', href: `mailto:${student.email}` },
+            { label: 'Personal site', href: student.websiteUrl },
+          ]}
+        >
+          <span class="current-student-year">{student.entryYear}</span>
+          <p class="current-student-bio">{currentStudentBios[student.e3daId]}</p>
+        </PersonProfile>;
+      })}
+    </div>
   </section>;
 })}
