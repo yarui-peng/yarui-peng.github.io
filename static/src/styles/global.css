@@ -1,8 +1,8 @@
 @import "tailwindcss" source(none);
 @source "../pages";
 @source "../components";
-@import "./e3da-themes.css";
-@import "./site.css";
+@import "../../../shared/e3da-themes.css";
+@import "../../../shared/site.css";
 
 @theme {
   --font-display: ui-sans-serif, system-ui, sans-serif;
