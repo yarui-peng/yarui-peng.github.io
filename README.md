@@ -41,6 +41,7 @@ These decisions are part of the project requirements and should be preserved whe
 - Before finishing changes, build every affected layer, check the relevant route or endpoint, and inspect the public repository for generated files, private data, credentials, large binaries, and accidental path dependencies.
 - Keep the public current-student roster sanitized and explicit. Use public name, work email, degree group, lab-entry year, GitHub username for the avatar and personal Pages URL only; never import the private Personnel workbook directly into the static build.
 - Current-student cards should stay compact: show the lab-entry year as a small badge, and use the work email and personal site as the actionable links.
+- Current students should reuse the established `PersonProfile` presentation used by the People page, grouped by degree rather than introducing a second person-card pattern.
 - No additional package is required for the current GitHub integration: public profile, avatar, organization, and Pages links use normal URLs. If roster synchronization becomes necessary, prefer built-in `fetch` in GitHub Actions with a read-only secret; add `@octokit/rest` only if its typed API helpers materially simplify the workflow. Do not add an XLSX runtime dependency for the private Personnel workbook; export a reviewed public CSV or TypeScript roster instead.
 
 ### Deployment matrix

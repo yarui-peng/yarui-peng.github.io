@@ -3,13 +3,14 @@ const navigation = [
   { label: 'News', href: '/news/', items: ['Recent News'] },
   { label: 'Research', href: '/research/', items: ['Overview', 'Power-CAD', 'VLSI-CAD'] },
   { label: 'Teaching', href: '/teaching/', items: ['Overview'] },
-  { label: 'People', href: '/people/', items: ['Faculty', 'Ph.D. Students', 'Master Students', 'Alumni', 'Former Students'] },
+  { label: 'People', href: '/people/', items: ['Faculty', 'Current Students', 'Ph.D. Students', 'Master Students', 'Alumni', 'Former Students'] },
   { label: 'Publication', href: '/pub/', items: ['Overview', 'Journal', 'Conference', 'Thesis'] },
   { label: 'Resource', href: '/resource/', items: ['Hardware', 'Software'] },
 ];
 
 const peopleAnchors: Record<string, string> = {
   Faculty: '#Faculty',
+  'Current Students': '#Current%20Students',
   'Ph.D. Students': '#Ph.D.%20Students',
   'Master Students': '#Master%20Students',
   Alumni: '#Alumni',

@@ -1,5 +1,6 @@
 ---
 import type { CurrentStudent } from '../data/current-students';
+import PersonProfile from './PersonProfile.astro';
 
 interface Props {
   students: CurrentStudent[];
@@ -15,23 +16,18 @@ const degreeGroups: CurrentStudent['degree'][] = ['Ph.D.', 'MS', 'BS'];
 
   return <section class="current-student-group" aria-labelledby={`current-students-${degree}`}>
     <h3 id={`current-students-${degree}`}>{degree} Students</h3>
-    <div class="current-student-grid">
-      {group.map((student) => {
-        const siteUrl = `https://${student.githubUsername}.github.io/`;
-        const avatarUrl = `https://github.com/${student.githubUsername}.png?size=256`;
+    {group.map((student) => {
+      const siteUrl = `https://${student.githubUsername}.github.io/`;
+      const avatarUrl = `https://github.com/${student.githubUsername}.png?size=256`;
 
-        return <article class="current-student-card">
-          <img class="current-student-avatar" src={avatarUrl} alt={`${student.name} GitHub avatar`} loading="lazy" />
-          <div class="current-student-content">
-            <h4>{student.name}</h4>
-            <span class="current-student-year">{student.entryYear}</span>
-            <div class="current-student-links">
-              <a href={siteUrl} target="_blank" rel="noreferrer">Personal site</a>
-              <a href={`mailto:${student.email}`}>{student.email}</a>
-            </div>
-          </div>
-        </article>;
-      })}
-    </div>
+      return <PersonProfile
+        name={student.name}
+        image={avatarUrl}
+        email={student.email}
+        links={[{ label: 'Personal site', href: siteUrl }]}
+      >
+        <span class="current-student-year">{student.entryYear}</span>
+      </PersonProfile>;
+    })}
   </section>;
 })}
