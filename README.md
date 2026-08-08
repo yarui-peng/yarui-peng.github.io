@@ -54,7 +54,9 @@ The root GitHub Actions workflow builds only `static/`. It must never upload `dy
 
 ### GitHub organization and student sites
 
-The public People page links current students to the `e3da` organization, each student's public GitHub profile, and the conventional `https://<github-username>.github.io/` personal site. GitHub avatars are loaded from the public profile image endpoint at build-time page rendering.
+The public People page links current students to the `e3da` organization, each student's public GitHub profile, and the conventional `https://<github-username>.github.io/` personal site. It also links to the generated organization roster at `https://github.com/e3da/.github/blob/main/profile/README.md`. GitHub avatars are loaded from the public profile image endpoint at build-time page rendering.
+
+The organization workflow at `e3da/.github/.github/workflows/main.yml` owns automatic membership discovery and updates `profile/README.md`. The v3 static site should link to that README but should not duplicate its privileged API access. The workflow currently uses the `YRPENG_E3DA_RO` Actions secret to read organization membership; this secret belongs only in the organization repository's Actions settings.
 
 No GitHub permission is required for public profile links, public avatars, or the public organization page. The organization member API currently returns no members anonymously, so private organization membership should not be fetched by the static site. If the roster later needs automatic synchronization, either make the relevant organization memberships public or provide a GitHub Actions secret containing a fine-grained token with read-only organization Members permission. Never put that token in browser code or the published artifact.
 

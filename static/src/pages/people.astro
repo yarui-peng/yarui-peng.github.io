@@ -25,7 +25,7 @@ const profileLinks = [
 <LegacyLayout title="People | E3DA Lab">
   <LegacyPanel title="Faculty" headingLevel={1} tone="primary" id="Faculty"><PersonProfile name={`${facultyInfo.Title} ${facultyInfo.FirstName} ${facultyInfo.LastName}`} image="/img/people/faculty/yrpeng.jpg" links={profileLinks}><Fragment set:html={html('people/Faculty/yrpeng/bio.html')} /></PersonProfile></LegacyPanel>
   <LegacyPanel title="Current Students" tone="primary" id="Current Students">
-    <p class="current-student-intro">Our current students publish their personal websites through their GitHub accounts. Their public profiles and avatars are linked from the <a href="https://github.com/e3da" target="_blank" rel="noreferrer">E3DA Lab GitHub organization</a>.</p>
+    <p class="current-student-intro">Our current students publish their personal websites through their GitHub accounts. Their public profiles and avatars are linked from the <a href="https://github.com/e3da" target="_blank" rel="noreferrer">E3DA Lab GitHub organization</a>. The organization maintains the complete automatically updated <a href="https://github.com/e3da/.github/blob/main/profile/README.md" target="_blank" rel="noreferrer">member roster in its profile README</a>.</p>
     <CurrentStudentGrid students={currentStudents} />
   </LegacyPanel>
   <LegacyPanel title="Ph.D. Students" tone="primary" id="Ph.D. Students"><PersonProfile name={`${mehran.FirstName} ${mehran.LastName}`} image="/img/people/phd/mehrans.jpg" links={[{ label: 'CV', href: '#' }, { label: 'Website', href: '#' }, { label: 'Email', href: '#' }]}><Fragment set:html={html('people/Ph.D. Students/mehrans/bio.txt')} /></PersonProfile></LegacyPanel>
