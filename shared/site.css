@@ -436,7 +436,11 @@ a {
 }
 
 .current-student-intro {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1rem;
+}
+
+.current-student-panels > .legacy-card + .legacy-card {
+  margin-top: 1rem;
 }
 
 .current-student-group + .current-student-group {
@@ -587,6 +591,22 @@ a {
   margin: 0 0 1rem;
 }
 
+.alumni-record-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.alumni-record-grid .person-record {
+  min-width: 0;
+  margin: 0;
+  padding: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--e3da-primary) 22%, var(--e3da-line));
+  border-radius: 0.35rem;
+  background: color-mix(in srgb, var(--e3da-paper) 94%, var(--e3da-primary));
+}
+
 .person-record:not(:has(.person-record-image)) {
   grid-template-columns: 1fr;
 }
@@ -673,6 +693,10 @@ a {
 
   .person-record {
     grid-template-columns: 4rem 1fr;
+  }
+
+  .alumni-record-grid {
+    grid-template-columns: 1fr;
   }
 
   .person-record-image {
