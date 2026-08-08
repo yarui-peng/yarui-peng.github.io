@@ -1,11 +1,15 @@
 ---
 import LegacyLayout from '../components/LegacyLayout.astro';
 import LegacyPanel from '../components/LegacyPanel.astro';
+import { teachingOverview } from '../data/lab-profile';
 ---
 
 <LegacyLayout title="Teaching | E3DA Lab">
-  <LegacyPanel title="Teaching" headingLevel={1}>
+  <LegacyPanel title="Teaching Overview" headingLevel={1} id="Overview">
+    <p>{teachingOverview.introduction}</p>
     <p>Course resources, schedules, and teaching tools are available through the teaching portal.</p>
     <a class="legacy-button btn btn-sm" href="/teaching/index.php">Open Teaching Portal</a>
   </LegacyPanel>
+  <LegacyPanel title="Current Courses" id="Current Courses"><div class="teaching-course-grid">{teachingOverview.currentCourses.map((course) => <article class="teaching-course"><p class="teaching-course-term">{course.term}</p><h3>{course.title}</h3><p>{course.level}</p><a href={course.href} target="_blank" rel="noreferrer">Course details</a></article>)}</div></LegacyPanel>
+  <LegacyPanel title="Teaching History" id="Teaching History"><p>{teachingOverview.history}</p></LegacyPanel>
 </LegacyLayout>

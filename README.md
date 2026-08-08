@@ -29,6 +29,7 @@ These decisions are part of the project requirements and should be preserved whe
 
 - Treat this README as the living project reference. When a style choice, visual direction, architecture decision, deployment rule, security constraint, dependency policy, or general guideline changes, update this document in the same change so future work can follow the current intent.
 - The public frontend uses Astro, Tailwind CSS, and daisyUI. Keep the existing `e3da-light` and `e3da-dark` themes: light is primarily blue, while dark is primarily dark purple and navy.
+- The current faculty and lab profile is based on the Southeast University appointment beginning in September 2025. Keep current People, Research, and Teaching content separate from the historical University of Arkansas record, while retaining UArk work as clearly labeled history.
 - Use web-safe fonts only. Prefer the existing system font stack or another explicit web-safe stack; do not add remote font services or font packages without a clear project-wide reason.
 - Keep text and controls clearly separated from their backgrounds in both themes. Target at least WCAG AA contrast for normal text (4.5:1) and never rely on color alone to communicate an action, state, or distinction. Check foreground, background, borders, hover states, and focus states in both `e3da-light` and `e3da-dark`.
 - Keep information compact without making it crowded. Use stable spacing, readable line height, and compact controls; let content wrap or reflow before it overlaps, clips, or creates horizontal page overflow.

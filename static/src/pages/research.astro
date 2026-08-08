@@ -2,6 +2,7 @@
 import LegacyLayout from '../components/LegacyLayout.astro';
 import LegacyPanel from '../components/LegacyPanel.astro';
 import { html, rows } from '../data/legacy';
+import { researchOverview } from '../data/lab-profile';
 
 const projects = [
   ...rows('research/Power-CAD/project/Ongoing.csv').map((row) => ({ area: 'Power-CAD', status: 'Ongoing', row })),
@@ -11,10 +12,10 @@ const projects = [
 ---
 
 <LegacyLayout title="Research | E3DA Lab">
-  <LegacyPanel title="Computer-Aided Design & Electronic Design Automation" headingLevel={1} id="Overview"><div class="content-copy" set:html={html('research/overview/Computer-Aided Design & Electronic Design Automation.html')} /></LegacyPanel>
+  <LegacyPanel title="Energy-Efficient Electronics & Design Automation" headingLevel={1} id="Overview"><div class="content-copy"><p>{researchOverview.introduction}</p><h3>Research Areas</h3><ul>{researchOverview.areas.map((area) => <li>{area}</li>)}</ul><p>{researchOverview.current}</p></div></LegacyPanel>
   <div class="grid gap-3 md:grid-cols-2">
     <LegacyPanel title="Power-CAD" id="Power-CAD"><div class="content-copy" set:html={html('research/Power-CAD/Physical Design Automation for Power Electronics and Systems.html')} /></LegacyPanel>
     <LegacyPanel title="VLSI-CAD" id="VLSI-CAD"><div class="content-copy" set:html={html('research/VLSI-CAD/VLSI Design with Advanced Packaging and Emerging Technologies.html')} /></LegacyPanel>
   </div>
-  <LegacyPanel title="Projects"><div class="table-scroll" role="region" aria-label="Projects table" tabindex="0"><table class="table table-zebra legacy-data-table"><thead><tr><th>Area</th><th>Status</th><th>Project</th><th>Sponsor</th><th>Period</th><th>PI</th></tr></thead><tbody>{projects.map(({ area, status, row }) => <tr><td>{area}</td><td>{status}</td><td>{row[0]}</td><td>{row[1]}</td><td>{row[4]} - {row[5]}</td><td>{row.slice(6).join(', ')}</td></tr>)}</tbody></table></div></LegacyPanel>
+  <LegacyPanel title="Projects" id="Projects"><div class="table-scroll" role="region" aria-label="Projects table" tabindex="0"><table class="table table-zebra legacy-data-table"><thead><tr><th>Area</th><th>Status</th><th>Project</th><th>Sponsor</th><th>Period</th><th>PI</th></tr></thead><tbody>{projects.map(({ area, status, row }) => <tr><td>{area}</td><td>{status}</td><td>{row[0]}</td><td>{row[1]}</td><td>{row[4]} - {row[5]}</td><td>{row.slice(6).join(', ')}</td></tr>)}</tbody></table></div></LegacyPanel>
 </LegacyLayout>

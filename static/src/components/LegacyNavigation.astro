@@ -1,8 +1,8 @@
 ---
 const navigation = [
   { label: 'News', href: '/news/', items: ['Recent News'] },
-  { label: 'Research', href: '/research/', items: ['Overview', 'Power-CAD', 'VLSI-CAD'] },
-  { label: 'Teaching', href: '/teaching/', items: ['Overview'] },
+  { label: 'Research', href: '/research/', items: ['Overview', 'Power-CAD', 'VLSI-CAD', 'Projects'] },
+  { label: 'Teaching', href: '/teaching/', items: ['Overview', 'Current Courses', 'Teaching History'] },
   { label: 'People', href: '/people/', items: ['Faculty', 'Current Students', 'Ph.D. Students', 'Master Students', 'Alumni', 'Former Students'] },
   { label: 'Publication', href: '/pub/', items: ['Overview', 'Journal', 'Conference', 'Thesis'] },
   { label: 'Resource', href: '/resource/', items: ['Hardware', 'Software'] },
@@ -21,6 +21,13 @@ const researchAnchors: Record<string, string> = {
   Overview: '#Overview',
   'Power-CAD': '#Power-CAD',
   'VLSI-CAD': '#VLSI-CAD',
+  Projects: '#Projects',
+};
+
+const teachingAnchors: Record<string, string> = {
+  Overview: '#Overview',
+  'Current Courses': '#Current%20Courses',
+  'Teaching History': '#Teaching%20History',
 };
 
 const publicationQueries: Record<string, string> = {
@@ -34,6 +41,7 @@ function submenuHref(label: string, href: string, subitem: string): string {
   if (label === 'Resource') return `/resource/${subitem.toLowerCase()}/`;
   if (label === 'People') return href + peopleAnchors[subitem];
   if (label === 'Research') return href + researchAnchors[subitem];
+  if (label === 'Teaching') return href + teachingAnchors[subitem];
   if (label === 'Publication') return href + publicationQueries[subitem];
   return href;
 }
