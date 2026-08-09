@@ -123,8 +123,15 @@ a {
   padding-top: 3.5rem;
 }
 
-.hover-gallery {
+.research-gallery {
   margin-top: 1rem;
+}
+
+.research-gallery-item {
+  display: block;
+  overflow: hidden;
+  border-radius: 0.35rem;
+  background: var(--color-base-200);
 }
 
 .legacy-container {
