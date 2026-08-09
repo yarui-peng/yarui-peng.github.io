@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Navbar from './Navbar.astro';
 
 const { title = 'E3DA Lab' } = Astro.props;
+const InternalSiteUrl = (import.meta.env.PUBLIC_INTERNAL_SITE_URL ?? 'https://members.example.org').replace(/\/$/, '');
 ---
 
 <!doctype html>
@@ -33,7 +34,7 @@ const { title = 'E3DA Lab' } = Astro.props;
         </button>
         <details class="dropdown dropdown-end hidden lg:block">
           <summary class="btn btn-ghost btn-sm">Login</summary>
-          <ul class="dropdown-content z-10 mt-3 w-44 rounded-box bg-base-100 p-2 text-base-content shadow"><li><a href="/user/login-uark.php">Login-UARK</a></li><li><a href="/user/login-e3da.php">Login-E3DA</a></li></ul>
+          <ul class="dropdown-content z-10 mt-3 w-44 rounded-box bg-base-100 p-2 text-base-content shadow"><li><a href={`${InternalSiteUrl}/login`}>Member services</a></li></ul>
         </details>
       </div>
     </header>

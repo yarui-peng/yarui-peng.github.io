@@ -17,9 +17,9 @@ if (Astro.request.method === 'POST') {
 
 <DynamicLayout title="Login">
   <section class="mx-auto max-w-md">
-    <div class="card border border-base-300 bg-base-100 shadow-sm">
+    <div class="site-card site-card-primary card border border-primary bg-base-100">
+      <h1 class="site-card-header card-title px-4 py-2 text-center">Member services login</h1>
       <div class="card-body">
-        <h1 class="card-title text-2xl">Dynamic site login</h1>
         <p class="text-base-content/70">Member and teaching services are hosted separately from the public site.</p>
         {IsDevelopmentOpenLoginEnabled() && <div class="alert alert-warning text-sm">Development mode: any non-empty username is accepted. Disable this before production.</div>}
         {ErrorMessage && <div class="alert alert-error">{ErrorMessage}</div>}

@@ -60,6 +60,8 @@ These decisions are part of the project requirements and should be preserved whe
 - The legacy PHP/Bootstrap website, v1, and v2 are reference material. Do not modify them during v3 work, and do not copy legacy private data into a public build.
 - Keep editorial and catalog data human-editable and file-based: Markdown, YAML, JSON, CSV, and BibTeX are preferred before introducing a database.
 - The public GitHub/Cloudflare deployment and the internal server deployment are separate websites. The internal site must remain independently usable even if the public static site is unavailable.
+- Set `PUBLIC_SITE_URL` on dynamic and internal deployments when the public hostname changes; both services otherwise link to `https://yarui-peng.github.io/`.
+- Set `PUBLIC_INTERNAL_SITE_URL` when building the static site to point its member-services link at the deployed internal hostname; the default is `https://members.example.org`.
 - The planned deployment topology is: GitHub Pages or Cloudflare Pages for public static assets; an outside server for limited public dynamic services and release downloads; and a private or China-hosted server for member services, teaching, administration, and LDAP-backed SSO.
 - The internal site must not expose LDAP credentials or directly handle LDAP passwords. Use an LDAP-backed OIDC identity provider and explicit group-to-role authorization. Development open login is temporary and must fail closed in production.
 - Private manuals, PDFs, videos, software archives, survey records, session data, and credentials must stay outside the static build and outside public CDN aliases. Serve protected files through an authenticated, range-aware endpoint.

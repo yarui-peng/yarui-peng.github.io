@@ -25,10 +25,11 @@ if (Astro.request.method === 'POST') {
 
 <DynamicLayout title="Download survey">
   <section class="mx-auto max-w-xl">
-    <div class="card border border-base-300 bg-base-100 shadow-sm">
+    <div class="site-card site-card-primary card border border-primary bg-base-100">
+      <h1 class="site-card-header card-title px-4 py-2 text-center">Download survey</h1>
       <div class="card-body">
         <p class="text-sm font-semibold uppercase tracking-wide text-primary">Software release</p>
-        <h1 class="card-title text-2xl">A short download survey</h1>
+        <h2 class="text-xl font-semibold">A short download survey</h2>
         <p class="text-base-content/70">Tell us a little about how the package will be used. Your response unlocks this download for 30 days.</p>
         <p class="rounded-box bg-base-200 p-3 font-mono text-sm break-all">{File}</p>
         <form method="post" action="/survey" class="space-y-3">

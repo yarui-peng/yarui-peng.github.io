@@ -1,8 +1,9 @@
 ---
 import '../styles/global.css';
 
-const { title = 'Dynamic Site' } = Astro.props;
+const { title = 'Member Services' } = Astro.props;
 const Session = Astro.locals.Session;
+const PublicSiteUrl = import.meta.env.PUBLIC_SITE_URL ?? 'https://yarui-peng.github.io/';
 const UserMenu = Session
   ? `<span class="text-sm opacity-90">${Session.Username}${Session.IsAdmin ? ' · admin' : ''}</span><a class="link link-hover" href="/logout">Log out</a>`
   : '<a class="link link-hover" href="/login">Log in</a>';
@@ -14,15 +15,48 @@ const UserMenu = Session
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="E3DA Lab member services" />
+    <script is:inline>
+      (() => {
+        const themes = ['e3da-light', 'e3da-dark'];
+        const saved = localStorage.getItem('e3da-theme');
+        document.documentElement.dataset.theme = themes.includes(saved ?? '') ? saved : 'e3da-light';
+      })();
+    </script>
     <title>{title} · E3DA Lab</title>
   </head>
-  <body class="min-h-screen bg-base-200 text-base-content">
-    <header class="navbar bg-accent text-accent-content shadow-sm">
-      <div class="mx-auto flex w-full max-w-5xl items-center justify-between px-4">
-        <a class="text-lg font-semibold" href="/app">E3DA Lab · Dynamic</a>
-        <nav class="flex items-center gap-4">{UserMenu}</nav>
+  <body class="site-page min-h-screen bg-base-100 text-base-content">
+    <header class="site-navbar navbar fixed top-0 z-50 min-h-14 bg-accent px-3 text-accent-content lg:px-5">
+      <div class="navbar-start">
+        <a class="navbar-brand p-0 text-base font-semibold" href="/app">E3DA Lab · Member Services</a>
+      </div>
+      <div class="navbar-end gap-2">
+        <a class="btn btn-ghost btn-sm hidden sm:inline-flex" href={PublicSiteUrl}>Public site</a>
+        <button class="btn btn-ghost btn-sm theme-toggle" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"><span class="theme-toggle-icon" aria-hidden="true">&#9788;</span><span class="theme-toggle-label hidden sm:inline">Light</span></button>
+        <nav class="flex items-center gap-3">{UserMenu}</nav>
       </div>
     </header>
-    <main class="mx-auto w-full max-w-5xl px-4 py-6 sm:py-10"><slot /></main>
+    <main class="site-container mx-auto px-3 py-4"><slot /></main>
   </body>
 </html>
+
+<script>
+  const themeButton = document.querySelector<HTMLButtonElement>('.theme-toggle');
+  const themeLabel = themeButton?.querySelector<HTMLElement>('.theme-toggle-label');
+  const themes = ['e3da-light', 'e3da-dark'];
+  const labels = ['Light', 'Dark'];
+  function updateThemeButton(theme: string) {
+    const index = Math.max(0, themes.indexOf(theme));
+    if (themeLabel) themeLabel.textContent = labels[index];
+    const icon = themeButton?.querySelector<HTMLElement>('.theme-toggle-icon');
+    if (icon) icon.textContent = index === 0 ? '\u2600' : '\u263e';
+    themeButton?.setAttribute('aria-label', `Toggle light/dark mode (current: ${labels[index]})`);
+  }
+  updateThemeButton(document.documentElement.dataset.theme ?? 'e3da-light');
+  themeButton?.addEventListener('click', () => {
+    const current = document.documentElement.dataset.theme ?? 'e3da-light';
+    const next = themes[(themes.indexOf(current) + 1) % themes.length];
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('e3da-theme', next);
+    updateThemeButton(next);
+  });
+</script>

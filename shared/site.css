@@ -158,8 +158,12 @@ a {
 .site-card,
 .site-card-nested {
   border-width: 2px !important;
-  border-radius: var(--e3da-radius);
+  overflow: hidden;
   transition: box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.site-card-nested {
+  border-radius: var(--e3da-radius);
 }
 
 .site-card {
@@ -234,7 +238,7 @@ a {
 
 .site-card-header {
   border-bottom: 1px solid currentColor;
-  border-radius: var(--e3da-radius) var(--e3da-radius) 0 0;
+  border-radius: 0;
   background: var(--color-secondary);
   color: var(--color-secondary-content);
   justify-content: center;
