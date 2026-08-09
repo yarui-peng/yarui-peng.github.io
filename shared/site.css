@@ -382,6 +382,7 @@ a {
   color: var(--color-accent-content) !important;
   font-size: inherit;
   font-weight: 700;
+  text-align: center;
   white-space: nowrap;
 }
 
