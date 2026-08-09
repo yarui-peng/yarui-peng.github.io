@@ -166,8 +166,28 @@ a {
   box-shadow: 0 0.125rem 0.5rem color-mix(in srgb, var(--color-base-content) 10%, transparent);
 }
 
+.site-card-primary {
+  --site-card-heading: var(--color-primary);
+  --site-card-heading-content: var(--color-primary-content);
+}
+
+.site-card-success {
+  --site-card-heading: var(--color-secondary);
+  --site-card-heading-content: var(--color-secondary-content);
+}
+
 .site-card-nested {
   box-shadow: 0 0.1rem 0.35rem color-mix(in srgb, var(--color-base-content) 8%, transparent);
+}
+
+.site-card-nested.border-primary {
+  --site-card-heading: var(--color-primary);
+  --site-card-heading-content: var(--color-primary-content);
+}
+
+.site-card-nested.border-secondary {
+  --site-card-heading: var(--color-secondary);
+  --site-card-heading-content: var(--color-secondary-content);
 }
 
 .site-card-major {
@@ -725,8 +745,8 @@ a {
 
 .person-action {
   flex: 0 0 auto;
-  background-color: var(--color-primary) !important;
-  color: var(--color-primary-content) !important;
+  background-color: var(--site-card-heading, var(--color-primary)) !important;
+  color: var(--site-card-heading-content, var(--color-primary-content)) !important;
   font-size: 0.88rem;
   font-weight: 700;
   text-decoration: none;
@@ -734,13 +754,13 @@ a {
 }
 
 .person-action + .person-action {
-  border-left: 1px solid color-mix(in srgb, var(--color-primary-content) 45%, var(--color-primary));
+  border-left: 1px solid color-mix(in srgb, var(--site-card-heading-content, var(--color-primary-content)) 45%, var(--site-card-heading, var(--color-primary)));
 }
 
 .person-action:hover,
 .person-action:focus-visible {
-  background-color: color-mix(in srgb, var(--color-primary-content) 18%, var(--color-primary)) !important;
-  color: var(--color-primary-content) !important;
+  background-color: color-mix(in srgb, var(--site-card-heading-content, var(--color-primary-content)) 18%, var(--site-card-heading, var(--color-primary))) !important;
+  color: var(--site-card-heading-content, var(--color-primary-content)) !important;
 }
 
 .research-area-list {
