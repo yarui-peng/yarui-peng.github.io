@@ -626,7 +626,7 @@ a {
   padding: 1rem;
   border: 1px solid color-mix(in srgb, var(--e3da-primary) 22%, var(--e3da-line));
   border-radius: var(--e3da-radius);
-  background: color-mix(in srgb, var(--e3da-paper) 94%, var(--e3da-primary));
+  background: transparent;
 }
 
 .current-student-grid .person-profile-image {
@@ -725,8 +725,8 @@ a {
 
 .person-action {
   flex: 0 0 auto;
-  background-color: var(--color-accent) !important;
-  color: var(--color-accent-content) !important;
+  background-color: var(--color-primary) !important;
+  color: var(--color-primary-content) !important;
   font-size: 0.88rem;
   font-weight: 700;
   text-decoration: none;
@@ -739,8 +739,8 @@ a {
 
 .person-action:hover,
 .person-action:focus-visible {
-  background-color: color-mix(in srgb, var(--color-accent-content) 18%, var(--color-accent)) !important;
-  color: var(--color-accent-content) !important;
+  background-color: color-mix(in srgb, var(--color-primary-content) 18%, var(--color-primary)) !important;
+  color: var(--color-primary-content) !important;
 }
 
 .research-area-list {
