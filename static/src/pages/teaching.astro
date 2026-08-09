@@ -10,6 +10,6 @@ import { teachingOverview } from '../data/lab-profile';
     <p>Course resources, schedules, and teaching tools are available through the teaching portal.</p>
     <a class="site-button btn btn-sm" href="/teaching/index.php">Open Teaching Portal</a>
   </Card>
-  <Card title="Current Courses" id="Current Courses"><div class="teaching-course-grid">{teachingOverview.currentCourses.map((course) => <article class="teaching-course"><h3>{course.title}</h3><span class="teaching-course-term badge badge-outline">{course.term}</span><p>{course.level}</p><a href={course.href} target="_blank" rel="noreferrer">Course details</a></article>)}</div></Card>
+  <Card title="Current Courses" id="Current Courses"><div class="teaching-course-grid">{teachingOverview.currentCourses.map((course) => <article class="teaching-course card border border-primary bg-base-100"><h3 class="teaching-course-title card-title">{course.title}</h3><div class="card-body"><span class="teaching-course-term badge badge-outline">{course.term}</span><p class="teaching-course-subtitle">{course.level}</p><a class="teaching-course-link" href={course.href} target="_blank" rel="noreferrer">Course details <span aria-hidden="true">&#8594;</span></a></div></article>)}</div></Card>
   <Card title="Teaching History" id="Teaching History"><p>{teachingOverview.history}</p></Card>
 </SiteLayout>
