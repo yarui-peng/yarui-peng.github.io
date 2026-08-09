@@ -13,4 +13,26 @@ const { areaTitle, images } = Astro.props;
 const galleryId = areaTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 ---
 
-{images.length > 0 && <div id={`${galleryId}-gallery`} class="research-gallery carousel w-full" aria-label={`${areaTitle} gallery`}>{images.map((image, index) => { const previous = index === 0 ? images.length - 1 : index - 1; const next = index === images.length - 1 ? 0 : index + 1; return <div id={`${galleryId}-slide-${index + 1}`} class="research-gallery-item carousel-item relative w-full"><img class="w-full" src={image.src} alt={image.alt} loading="lazy" /><div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"><a class="btn btn-circle" href={`#${galleryId}-slide-${previous + 1}`} aria-label={`Previous ${areaTitle} image`} title="Previous image">&#10094;</a><a class="btn btn-circle" href={`#${galleryId}-slide-${next + 1}`} aria-label={`Next ${areaTitle} image`} title="Next image">&#10095;</a></div></div>; })}</div>}
+{images.length > 0 && <div id={`${galleryId}-gallery`} class="research-gallery carousel w-full" aria-label={`${areaTitle} gallery`} aria-roledescription="carousel">{images.map((image, index) => { const previous = index === 0 ? images.length - 1 : index - 1; const next = index === images.length - 1 ? 0 : index + 1; return <div id={`${galleryId}-slide-${index + 1}`} class="research-gallery-item carousel-item relative w-full" aria-roledescription="slide" aria-label={`${index + 1} of ${images.length}`}><img class="w-full" src={image.src} alt={image.alt} loading="lazy" /><div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"><a class="research-carousel-control btn btn-circle btn-ghost bg-base-100/25 text-base-content/60 opacity-70 shadow-none backdrop-blur-sm hover:bg-base-100/45 hover:text-base-content hover:opacity-100 focus-visible:opacity-100" href={`#${galleryId}-slide-${previous + 1}`} aria-label={`Previous ${areaTitle} image`} title="Previous image">&#10094;</a><a class="research-carousel-control btn btn-circle btn-ghost bg-base-100/25 text-base-content/60 opacity-70 shadow-none backdrop-blur-sm hover:bg-base-100/45 hover:text-base-content hover:opacity-100 focus-visible:opacity-100" href={`#${galleryId}-slide-${next + 1}`} aria-label={`Next ${areaTitle} image`} title="Next image">&#10095;</a></div></div>; })}</div>}
+
+<script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  for (const gallery of document.querySelectorAll<HTMLElement>('.research-gallery')) {
+    if (gallery.querySelectorAll('.research-gallery-item').length < 2 || prefersReducedMotion.matches) continue;
+
+    let paused = false;
+    const rotate = () => {
+      if (paused) return;
+      const slides = [...gallery.querySelectorAll<HTMLElement>('.research-gallery-item')];
+      const currentIndex = Math.max(0, slides.findIndex((slide) => window.location.hash === `#${slide.id}`));
+      window.location.hash = `#${slides[(currentIndex + 1) % slides.length].id}`;
+    };
+
+    gallery.addEventListener('mouseenter', () => { paused = true; });
+    gallery.addEventListener('mouseleave', () => { paused = false; });
+    gallery.addEventListener('focusin', () => { paused = true; });
+    gallery.addEventListener('focusout', () => { paused = false; });
+    window.setInterval(rotate, 6000);
+  }
+</script>

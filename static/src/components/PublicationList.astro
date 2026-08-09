@@ -31,9 +31,9 @@ function authorMarkup(entry: Publication): string {
 }
 ---
 
-<div class="publication-list bibbrowser-list">
-  {entries.length === 0 && <p class="publication-empty">{emptyMessage}</p>}
-  {entries.map((entry) => <article class="publication-entry bibitem" data-publication-type={entry.type.toLowerCase()} data-publication-year={entry.year} data-publication-search={[entry.type, entry.title, entry.author, entry.venue, entry.note ?? ''].join(' ').toLowerCase()} data-publication-author={entry.author.toLowerCase()}>
+<ul class="publication-list bibbrowser-list list">
+  {entries.length === 0 && <li class="publication-empty">{emptyMessage}</li>}
+  {entries.map((entry) => <li class="publication-entry bibitem" data-publication-type={entry.type.toLowerCase()} data-publication-year={entry.year} data-publication-search={[entry.type, entry.title, entry.author, entry.venue, entry.note ?? ''].join(' ').toLowerCase()} data-publication-author={entry.author.toLowerCase()}>
     {entry.author && <span class="publication-authors bibauthor" set:html={`${authorMarkup(entry)}, `} />}
     <span class="publication-title bibtitle">{entry.url ? <a href={entry.url}>&ldquo;{entry.title}&rdquo;</a> : <>&ldquo;{entry.title}&rdquo;</>}</span>
     {entry.venue && <span class="publication-venue bibbooktitle">, {entry.type === 'inproceedings' && entry.booktitle ? `in Proc. ${entry.booktitle}` : entry.venue}</span>}
@@ -41,8 +41,8 @@ function authorMarkup(entry: Publication): string {
     <div class="publication-links">
       {entry.doi && <a href={`https://doi.org/${entry.doi}`}>DOI</a>}
     </div>
-  </article>)}
-</div>
+  </li>)}
+</ul>
 
 <script>
   const list = document.querySelector('.bibbrowser-list');
@@ -64,7 +64,7 @@ function authorMarkup(entry: Publication): string {
   }
 
   if (entries.length && !visible) {
-    const empty = document.createElement('p');
+    const empty = document.createElement('li');
     empty.className = 'publication-empty';
     empty.textContent = 'No publications match this filter.';
     list?.prepend(empty);

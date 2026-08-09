@@ -449,6 +449,7 @@ a {
 }
 
 .publication-entry {
+  display: block;
   padding: 0.1rem 0.5rem 0.5rem 0.2rem;
   text-align: justify;
   font-size: 1.02rem;
@@ -635,25 +636,15 @@ a {
   position: absolute;
   top: 0;
   right: 0;
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 0;
   margin: 0 0 1rem;
-  border: 1px solid var(--e3da-primary);
-  border-radius: 0.35rem;
-  background: var(--color-primary);
   overflow-x: auto;
   overflow-y: hidden;
 }
 
 .person-action {
   flex: 0 0 auto;
-  padding: 0.3rem 0.5rem;
-  border: 0;
-  color: var(--color-primary-content);
   font-size: 0.88rem;
   font-weight: 700;
-  line-height: 1.2;
   text-decoration: none;
   white-space: nowrap;
 }
