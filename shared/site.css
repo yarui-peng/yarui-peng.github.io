@@ -722,15 +722,15 @@ a {
 .research-area-list {
   margin: 0 0 1rem;
   overflow: hidden;
-  background: color-mix(in srgb, var(--color-secondary) 8%, var(--color-base-100));
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-base-100));
 }
 
 .content-copy .research-area-heading {
   margin: 0;
   padding: 0.55rem 0.75rem;
-  border-bottom: 1px solid var(--color-secondary);
-  background: var(--color-secondary);
-  color: var(--color-secondary-content);
+  border-bottom: 1px solid var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-primary-content);
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.25;
@@ -739,17 +739,17 @@ a {
 
 .research-area-list .list-row {
   min-height: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 28%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
 }
 
 .research-area-link {
-  color: var(--color-success);
+  color: var(--e3da-primary-dark);
 }
 
 .research-area-link:hover,
 .research-area-link:focus-visible {
-  background: color-mix(in srgb, var(--color-secondary) 16%, var(--color-base-100));
-  color: var(--color-success);
+  background: color-mix(in srgb, var(--color-primary) 16%, var(--color-base-100));
+  color: var(--e3da-primary-dark);
 }
 
 .person-record {
