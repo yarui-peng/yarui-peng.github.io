@@ -10,16 +10,7 @@ interface Props {
 }
 
 const { areaTitle, images } = Astro.props;
+const galleryId = areaTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 ---
 
-{images.length > 0 && <div class="research-gallery-shell"><button class="research-gallery-control btn btn-circle btn-sm btn-outline" type="button" data-gallery-prev aria-label={`Previous ${areaTitle} image`} title="Previous image">&#8592;</button><div class="research-gallery carousel carousel-center" aria-label={`${areaTitle} gallery`}>{images.map((image) => <a class="research-gallery-item carousel-item w-full" href={image.src} aria-label={`Open ${image.alt}`} title={image.alt}><img src={image.src} alt={image.alt} loading="lazy" /></a>)}</div><button class="research-gallery-control btn btn-circle btn-sm btn-outline" type="button" data-gallery-next aria-label={`Next ${areaTitle} image`} title="Next image">&#8594;</button></div>}
-
-<script>
-  document.querySelectorAll<HTMLElement>('.research-gallery-shell').forEach((shell) => {
-    const gallery = shell.querySelector<HTMLElement>('.research-gallery');
-    const item = shell.querySelector<HTMLElement>('.research-gallery-item');
-    const step = () => (item?.getBoundingClientRect().width ?? 0) + 12;
-    shell.querySelector<HTMLButtonElement>('[data-gallery-prev]')?.addEventListener('click', () => gallery?.scrollBy({ left: -step(), behavior: 'smooth' }));
-    shell.querySelector<HTMLButtonElement>('[data-gallery-next]')?.addEventListener('click', () => gallery?.scrollBy({ left: step(), behavior: 'smooth' }));
-  });
-</script>
+{images.length > 0 && <div id={`${galleryId}-gallery`} class="research-gallery carousel w-full" aria-label={`${areaTitle} gallery`}>{images.map((image, index) => { const previous = index === 0 ? images.length - 1 : index - 1; const next = index === images.length - 1 ? 0 : index + 1; return <div id={`${galleryId}-slide-${index + 1}`} class="research-gallery-item carousel-item relative w-full"><img class="w-full" src={image.src} alt={image.alt} loading="lazy" /><div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"><a class="btn btn-circle" href={`#${galleryId}-slide-${previous + 1}`} aria-label={`Previous ${areaTitle} image`} title="Previous image">&#10094;</a><a class="btn btn-circle" href={`#${galleryId}-slide-${next + 1}`} aria-label={`Next ${areaTitle} image`} title="Next image">&#10095;</a></div></div>; })}</div>}
