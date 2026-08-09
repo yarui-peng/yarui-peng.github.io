@@ -156,6 +156,8 @@ a {
 }
 
 .site-card {
+  border-width: 2px !important;
+  border-radius: var(--e3da-radius);
   box-shadow: 0 0.125rem 0.5rem color-mix(in srgb, var(--color-base-content) 10%, transparent);
   transition: box-shadow 180ms ease;
 }
@@ -264,6 +266,8 @@ a {
 .teaching-course {
   min-width: 0;
   overflow: hidden;
+  border-width: 2px !important;
+  border-radius: var(--e3da-radius);
 }
 
 .teaching-course-title {
