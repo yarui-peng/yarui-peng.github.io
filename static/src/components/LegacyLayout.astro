@@ -29,7 +29,7 @@ const { title = 'E3DA Lab' } = Astro.props;
       <div class="navbar-end gap-2">
         <LegacyNavigation mobile />
         <button class="btn btn-ghost btn-sm theme-toggle" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
-          <span class="theme-toggle-icon" aria-hidden="true">&#9788;</span><span class="theme-toggle-label hidden sm:inline">Light mode</span>
+          <span class="theme-toggle-icon" aria-hidden="true">&#9788;</span><span class="theme-toggle-label hidden sm:inline">Light</span>
         </button>
         <details class="dropdown dropdown-end hidden lg:block">
           <summary class="btn btn-ghost btn-sm">Login</summary>
@@ -48,7 +48,7 @@ const { title = 'E3DA Lab' } = Astro.props;
   const themeButton = document.querySelector<HTMLButtonElement>('.theme-toggle');
   const themeLabel = themeButton?.querySelector<HTMLElement>('.theme-toggle-label');
   const themes = ['e3da-light', 'e3da-dark'];
-  const labels = ['Light mode', 'Dark mode'];
+  const labels = ['Light', 'Dark'];
 
   function updateThemeButton(theme: string) {
     const index = Math.max(0, themes.indexOf(theme));

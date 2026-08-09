@@ -140,11 +140,12 @@ a {
 }
 
 .legacy-card {
-  border: 1px solid var(--color-base-300);
-  border-radius: var(--e3da-radius);
-  background: var(--color-base-100);
   box-shadow: 0 0.125rem 0.5rem color-mix(in srgb, var(--color-base-content) 10%, transparent);
   transition: box-shadow 180ms ease;
+}
+
+.legacy-card-major {
+  border-width: 2px;
 }
 
 .legacy-card:hover {
@@ -171,7 +172,7 @@ a {
 }
 
 .legacy-card-header {
-  border-bottom: 1px solid var(--color-secondary);
+  border-bottom: 1px solid currentColor;
   border-radius: var(--e3da-radius) var(--e3da-radius) 0 0;
   background: var(--color-secondary);
   color: var(--color-secondary-content);
@@ -179,8 +180,16 @@ a {
   text-align: center !important;
 }
 
+.legacy-card-success .legacy-card-header {
+  border-bottom-color: var(--color-secondary);
+}
+
+.legacy-card-primary .legacy-card-header {
+  border-bottom-color: var(--color-primary);
+}
+
 .legacy-card-primary {
-  border-color: var(--color-secondary);
+  border-color: var(--color-primary);
 }
 
 .legacy-card-primary .legacy-card-header {
