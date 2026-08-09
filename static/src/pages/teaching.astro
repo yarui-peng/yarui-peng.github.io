@@ -10,6 +10,6 @@ import { teachingOverview } from '../data/lab-profile';
     <p>Course resources, schedules, and teaching tools are available through the teaching portal.</p>
     <a class="site-button btn btn-sm" href="/teaching/index.php">Open Teaching Portal</a>
   </Card>
-  <Card title="Current Courses" id="Current Courses"><div class="teaching-course-grid">{teachingOverview.currentCourses.map((course) => <article class="teaching-course"><p class="teaching-course-term">{course.term}</p><h3>{course.title}</h3><p>{course.level}</p><a href={course.href} target="_blank" rel="noreferrer">Course details</a></article>)}</div></Card>
+  <Card title="Current Courses" id="Current Courses"><div class="teaching-course-grid">{teachingOverview.currentCourses.map((course) => <article class="teaching-course"><h3>{course.title}</h3><span class="teaching-course-term badge badge-outline">{course.term}</span><p>{course.level}</p><a href={course.href} target="_blank" rel="noreferrer">Course details</a></article>)}</div></Card>
   <Card title="Teaching History" id="Teaching History"><p>{teachingOverview.history}</p></Card>
 </SiteLayout>

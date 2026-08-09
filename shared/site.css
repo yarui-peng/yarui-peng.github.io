@@ -274,13 +274,16 @@ a {
 }
 
 .teaching-course h3 {
-  margin-top: 0.25rem;
+  margin-top: 0;
   color: var(--e3da-primary-dark);
   font-size: 1.15rem;
   text-align: center;
 }
 
 .teaching-course-term {
+  display: block;
+  width: fit-content;
+  margin: 0.35rem auto 0.5rem;
   color: var(--e3da-ink-muted);
   font-size: 0.9rem;
   font-weight: 700;
@@ -503,17 +506,14 @@ a {
 }
 
 .bibhomepage {
-  color: var(--e3da-author-text);
-  text-decoration: none;
-  background-color: var(--e3da-author-bg);
+  color: var(--e3da-primary-dark);
+  text-decoration: underline;
+  background-color: transparent;
   font-weight: 700;
-  padding: 0.05rem 0.2rem;
-  border-radius: 0.2rem;
 }
 
 .bibhomepage:hover {
-  color: var(--color-primary);
-  background-color: var(--color-base-200);
+  color: var(--color-secondary);
 }
 
 .publication-venue {
