@@ -125,14 +125,30 @@ a {
 }
 
 .research-gallery {
-  margin-top: 1rem;
+  width: calc(100% + 2rem);
+  height: min(50vh, 36rem);
+  min-height: 14rem;
+  margin: 0.75rem 0 0 -1rem;
+  align-items: center;
 }
 
 .research-gallery-item {
-  display: block;
+  display: flex;
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   border-radius: var(--e3da-radius);
   background: var(--color-base-200);
+}
+
+.research-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .site-container {
@@ -814,6 +830,12 @@ a {
 
   .site-card .card-body {
     padding: 0.7rem 0.65rem;
+  }
+
+  .research-gallery {
+    width: calc(100% + 1.3rem);
+    min-height: 11rem;
+    margin-left: -0.65rem;
   }
 
   .publication-entry {
