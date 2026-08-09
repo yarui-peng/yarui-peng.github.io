@@ -159,22 +159,33 @@ a {
 .site-card-nested {
   border-width: 2px !important;
   border-radius: var(--e3da-radius);
-  box-shadow: 0 0.125rem 0.5rem color-mix(in srgb, var(--color-base-content) 10%, transparent);
   transition: box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.site-card {
+  box-shadow: 0 0.125rem 0.5rem color-mix(in srgb, var(--color-base-content) 10%, transparent);
+}
+
+.site-card-nested {
+  box-shadow: 0 0.1rem 0.35rem color-mix(in srgb, var(--color-base-content) 8%, transparent);
 }
 
 .site-card-major {
   border-width: 2px;
 }
 
-.site-card:hover,
-.site-card-nested:hover {
-  background-color: color-mix(in srgb, var(--color-base-100) 94%, var(--color-primary)) !important;
+.site-card:hover {
   box-shadow: 0 0.35rem 1rem color-mix(in srgb, var(--color-base-content) 23%, transparent) !important;
 }
 
+.site-card-nested:hover {
+  box-shadow: 0 0.25rem 0.75rem color-mix(in srgb, var(--color-base-content) 18%, transparent) !important;
+}
+
 .site-card:hover > .site-card-header,
-.site-card-nested:hover > :first-child {
+.site-card-nested:hover > :first-child,
+.site-card-nested:hover .person-profile-heading,
+.site-card-nested:hover .person-record h3 {
   filter: brightness(1.1) saturate(1.08);
 }
 

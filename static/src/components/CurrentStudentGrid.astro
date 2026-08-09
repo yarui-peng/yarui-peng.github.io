@@ -27,6 +27,7 @@ const entryYears = [...new Set(degreeStudents.map((student) => student.entryYear
             { label: 'Email', href: `mailto:${student.email}` },
             { label: 'Website', href: student.websiteUrl },
           ]}
+          class="site-card-nested"
         >
             <p class="current-student-bio">{currentStudentBios[student.e3daId]}</p>
         </PersonProfile>;

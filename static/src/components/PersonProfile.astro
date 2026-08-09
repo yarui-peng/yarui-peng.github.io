@@ -10,12 +10,13 @@ interface Props {
   email?: string;
   links?: LinkItem[];
   badge?: string;
+  class?: string;
 }
 
-const { name, image, email, links = [], badge } = Astro.props;
+const { name, image, email, links = [], badge, class: className = '' } = Astro.props;
 ---
 
-<article class="person-profile">
+<article class:list={['person-profile', className]}>
   {image && <img class="person-profile-image" src={image} alt={name} />}
   <div class="person-profile-content">
     <div class="person-profile-heading">
