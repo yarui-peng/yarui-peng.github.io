@@ -1,6 +1,6 @@
 ---
-import LegacyLayout from '../components/LegacyLayout.astro';
-import LegacyPanel from '../components/LegacyPanel.astro';
+import SiteLayout from '../components/SiteLayout.astro';
+import Card from '../components/Card.astro';
 import { rows } from '../data/legacy';
 import { researchOverview } from '../data/lab-profile';
 
@@ -11,7 +11,7 @@ const projects = [
 ];
 ---
 
-<LegacyLayout title="Research | E3DA Lab">
-  <LegacyPanel title="Energy-Efficient Electronics & Design Automation" headingLevel={1} id="Overview"><div class="content-copy"><p>{researchOverview.introduction}</p><h3>Research Areas</h3><div class="join rounded-box research-area-links join-vertical sm:join-horizontal" role="group" aria-label="Research areas">{researchOverview.areas.map((area) => <a class="btn btn-outline join-item font-semibold text-primary" href={`/research/${area.id.toLowerCase()}/`}>{area.title}</a>)}</div><p>{researchOverview.current}</p></div></LegacyPanel>
-  <LegacyPanel title="Projects" id="Projects"><div class="table-scroll" role="region" aria-label="Projects table" tabindex="0"><table class="table table-zebra legacy-data-table"><thead><tr><th>Project</th><th>Sponsor</th><th>Period</th><th>PI</th></tr></thead><tbody>{projects.map((row) => <tr class="transition-colors duration-150 hover:bg-primary/10 motion-reduce:transition-none"><td>{row[0]}</td><td>{row[1]}</td><td>{row[4]} - {row[5]}</td><td>{row.slice(6).join(', ')}</td></tr>)}</tbody></table></div></LegacyPanel>
-</LegacyLayout>
+<SiteLayout title="Research | E3DA Lab">
+  <Card title="Energy-Efficient Electronics & Design Automation" headingLevel={1} id="Overview"><div class="content-copy"><p>{researchOverview.introduction}</p><div class="research-area-list card border border-secondary"><h3 class="research-area-heading">Research Areas</h3><ul class="list w-full" aria-label="Research areas">{researchOverview.areas.map((area) => <li class="list-row p-0 last:border-b-0"><a class="research-area-link block w-full px-4 py-3 font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px]" href={`/research/${area.id.toLowerCase()}/`}>{area.title}</a></li>)}</ul></div><p>{researchOverview.current}</p></div></Card>
+  <Card title="Projects" id="Projects"><div class="table-scroll" role="region" aria-label="Projects table" tabindex="0"><table class="table table-zebra site-data-table"><thead><tr><th>Project</th><th>Sponsor</th><th>Period</th><th>PI</th></tr></thead><tbody>{projects.map((row) => <tr class="transition-colors duration-150 hover:bg-primary/10 motion-reduce:transition-none"><td>{row[0]}</td><td>{row[1]}</td><td>{row[4]} - {row[5]}</td><td>{row.slice(6).join(', ')}</td></tr>)}</tbody></table></div></Card>
+</SiteLayout>

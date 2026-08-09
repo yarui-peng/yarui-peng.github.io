@@ -66,7 +66,7 @@ const { mobile = false } = Astro.props;
   const desktopNavigation = window.matchMedia('(min-width: 1024px)');
 
   function updateDesktopDropdowns() {
-    document.querySelectorAll<HTMLElement>('.legacy-navbar nav details').forEach((dropdown) => {
+    document.querySelectorAll<HTMLElement>('.site-navbar nav details').forEach((dropdown) => {
       if (desktopNavigation.matches) {
         dropdown.addEventListener('mouseenter', openDropdown);
         dropdown.addEventListener('mouseleave', closeDropdown);

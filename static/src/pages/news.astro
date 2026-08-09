@@ -1,9 +1,9 @@
 ---
-import LegacyLayout from '../components/LegacyLayout.astro';
-import LegacyPanel from '../components/LegacyPanel.astro';
+import SiteLayout from '../components/SiteLayout.astro';
+import Card from '../components/Card.astro';
 import { html } from '../data/legacy';
 ---
 
-<LegacyLayout title="News | E3DA Lab">
-  <LegacyPanel title="Recent News" headingLevel={1}><div class="content-copy news-content" set:html={html('news/overview/Recent News.html')} /></LegacyPanel>
-</LegacyLayout>
+<SiteLayout title="News | E3DA Lab">
+  <Card title="Recent News" headingLevel={1}><div class="content-copy news-content" set:html={html('news/overview/Recent News.html')} /></Card>
+</SiteLayout>

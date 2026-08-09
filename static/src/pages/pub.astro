@@ -1,12 +1,12 @@
 ---
-import LegacyLayout from '../components/LegacyLayout.astro';
-import LegacyPanel from '../components/LegacyPanel.astro';
+import SiteLayout from '../components/SiteLayout.astro';
+import Card from '../components/Card.astro';
 import PublicationList from '../components/PublicationList.astro';
 import { publications } from '../data/legacy';
 
 const entries = publications();
 ---
 
-<LegacyLayout title="Publication | E3DA Lab">
-  <LegacyPanel title="Publication" headingLevel={1}><PublicationList entries={entries} /></LegacyPanel>
-</LegacyLayout>
+<SiteLayout title="Publication | E3DA Lab">
+  <Card title="Publication" headingLevel={1}><PublicationList entries={entries} /></Card>
+</SiteLayout>

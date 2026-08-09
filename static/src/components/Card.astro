@@ -1,0 +1,16 @@
+---
+interface Props {
+  title: string;
+  id?: string;
+  headingLevel?: 1 | 2;
+  tone?: 'success' | 'primary';
+  class?: string;
+}
+
+const { title, id, headingLevel = 2, tone = 'success', class: className = '' } = Astro.props;
+---
+
+<section id={id} class:list={['site-card', 'card', 'border', tone === 'primary' ? 'border-primary' : 'border-secondary', 'bg-base-100', 'shadow-sm', 'transition-shadow', 'duration-200', 'hover:shadow-md', 'motion-reduce:transition-none', headingLevel === 1 && 'site-card-major', `site-card-${tone}`, 'mb-2', className]}>
+  {headingLevel === 1 ? <h1 class:list={['site-card-header', 'card-title', 'px-4', 'py-2', 'text-center', 'transition', 'duration-200', 'hover:brightness-110', 'motion-reduce:transition-none', tone === 'primary' ? 'bg-primary text-primary-content' : 'bg-secondary text-secondary-content']}>{title}</h1> : <h2 class:list={['site-card-header', 'card-title', 'px-4', 'py-2', 'text-center', 'transition', 'duration-200', 'hover:brightness-110', 'motion-reduce:transition-none', tone === 'primary' ? 'bg-primary text-primary-content' : 'bg-secondary text-secondary-content']}>{title}</h2>}
+  <div class="card-body"><slot /></div>
+</section>

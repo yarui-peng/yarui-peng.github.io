@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import LegacyNavigation from './LegacyNavigation.astro';
+import Navbar from './Navbar.astro';
 
 const { title = 'E3DA Lab' } = Astro.props;
 ---
@@ -20,14 +20,14 @@ const { title = 'E3DA Lab' } = Astro.props;
     </script>
     <title>{title}</title>
   </head>
-  <body class="legacy-page bg-base-100 text-base-content">
-    <header class="legacy-navbar navbar fixed top-0 z-50 min-h-14 bg-accent px-3 text-accent-content lg:px-5">
+  <body class="site-page bg-base-100 text-base-content">
+    <header class="site-navbar navbar fixed top-0 z-50 min-h-14 bg-accent px-3 text-accent-content lg:px-5">
       <div class="navbar-start">
-        <a class="navbar-brand p-0" href="/" aria-label="E3DA Lab home"><img class="legacy-nav-logo" src="/img/e3da/logo/logo1t.svg" alt="E3DA" /></a>
+        <a class="navbar-brand p-0" href="/" aria-label="E3DA Lab home"><img class="site-nav-logo" src="/img/e3da/logo/logo1t.svg" alt="E3DA" /></a>
       </div>
-      <LegacyNavigation />
+      <Navbar />
       <div class="navbar-end gap-2">
-        <LegacyNavigation mobile />
+        <Navbar mobile />
         <button class="btn btn-ghost btn-sm theme-toggle" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
           <span class="theme-toggle-icon" aria-hidden="true">&#9788;</span><span class="theme-toggle-label hidden sm:inline">Light</span>
         </button>
@@ -38,7 +38,7 @@ const { title = 'E3DA Lab' } = Astro.props;
       </div>
     </header>
 
-    <main class="legacy-container mx-auto px-3 py-4">
+    <main class="site-container mx-auto px-3 py-4">
       <slot />
     </main>
   </body>

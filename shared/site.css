@@ -41,7 +41,7 @@ a {
   scroll-margin-top: 5rem;
 }
 
-.legacy-navbar {
+.site-navbar {
   background: var(--color-accent);
   color: var(--color-accent-content);
   height: 48px;
@@ -50,58 +50,58 @@ a {
   padding-bottom: 0;
 }
 
-.legacy-nav-logo {
+.site-nav-logo {
   display: block;
   width: 40px;
   height: 40px;
   object-fit: contain;
 }
 
-.legacy-navbar .navbar-brand,
-.legacy-navbar .nav-link {
+.site-navbar .navbar-brand,
+.site-navbar .nav-link {
   color: color-mix(in srgb, var(--color-accent-content) 90%, transparent);
 }
 
-.legacy-navbar .nav-link:hover,
-.legacy-navbar .navbar-brand:hover {
+.site-navbar .nav-link:hover,
+.site-navbar .navbar-brand:hover {
   color: var(--color-accent-content);
 }
 
-.legacy-navbar .btn,
-.legacy-navbar summary,
-.legacy-navbar .menu > li > a,
-.legacy-navbar .menu > li > details > summary {
+.site-navbar .btn,
+.site-navbar summary,
+.site-navbar .menu > li > a,
+.site-navbar .menu > li > details > summary {
   color: color-mix(in srgb, var(--color-accent-content) 90%, transparent) !important;
 }
 
-.legacy-navbar .btn:hover,
-.legacy-navbar summary:hover {
+.site-navbar .btn:hover,
+.site-navbar summary:hover {
   color: var(--color-accent-content) !important;
 }
 
-.legacy-navbar .dropdown-content {
+.site-navbar .dropdown-content {
   border: 1px solid var(--e3da-line);
   border-radius: var(--e3da-radius);
   background: var(--color-base-100);
   color: var(--color-base-content);
 }
 
-.legacy-navbar .dropdown-content a,
-.legacy-navbar .dropdown-content summary,
-.legacy-navbar .dropdown-content.menu,
-.legacy-navbar .dropdown-content.menu a,
-.legacy-navbar .dropdown-content.menu details > summary {
+.site-navbar .dropdown-content a,
+.site-navbar .dropdown-content summary,
+.site-navbar .dropdown-content.menu,
+.site-navbar .dropdown-content.menu a,
+.site-navbar .dropdown-content.menu details > summary {
   color: var(--color-base-content) !important;
 }
 
-.legacy-navbar .dropdown-content a:hover,
-.legacy-navbar .dropdown-content summary:hover {
+.site-navbar .dropdown-content a:hover,
+.site-navbar .dropdown-content summary:hover {
   background: color-mix(in srgb, var(--color-primary) 14%, var(--color-base-100));
   color: var(--color-base-content) !important;
 }
 
-.legacy-navbar .menu > li > a,
-.legacy-navbar .menu > li > details > summary {
+.site-navbar .menu > li > a,
+.site-navbar .menu > li > details > summary {
   min-height: 2rem;
   padding: 0.35rem 0.7rem;
   border-radius: var(--e3da-radius);
@@ -109,18 +109,18 @@ a {
   line-height: 1.2;
 }
 
-.legacy-navbar .menu > li > a:hover,
-.legacy-navbar .menu > li > details > summary:hover {
+.site-navbar .menu > li > a:hover,
+.site-navbar .menu > li > details > summary:hover {
   background: rgba(255, 255, 255, 0.12);
 }
 
 @media (min-width: 1024px) {
-  .legacy-navbar nav .dropdown-content {
+  .site-navbar nav .dropdown-content {
     margin-top: 0;
   }
 }
 
-.legacy-page {
+.site-page {
   padding-top: 3.5rem;
 }
 
@@ -135,43 +135,43 @@ a {
   background: var(--color-base-200);
 }
 
-.legacy-container {
+.site-container {
   width: min(100% - 1.5rem, 71.25rem);
 }
 
-.legacy-card {
+.site-card {
   box-shadow: 0 0.125rem 0.5rem color-mix(in srgb, var(--color-base-content) 10%, transparent);
   transition: box-shadow 180ms ease;
 }
 
-.legacy-card-major {
+.site-card-major {
   border-width: 2px;
 }
 
-.legacy-card:hover {
+.site-card:hover {
   box-shadow: 0 0.25rem 0.9rem color-mix(in srgb, var(--color-base-content) 16%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .legacy-card {
+  .site-card {
     transition: none;
   }
 }
 
-.legacy-card .card-body {
-  padding: 1.25rem;
-  font-size: 1.05rem;
-  line-height: 1.65;
+.site-card .card-body {
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
-.legacy-card .card-body p,
-.legacy-card .content-copy,
-.legacy-card .content-copy p,
-.legacy-card .content-copy li {
+.site-card .card-body p,
+.site-card .content-copy,
+.site-card .content-copy p,
+.site-card .content-copy li {
   text-align: justify;
 }
 
-.legacy-card-header {
+.site-card-header {
   border-bottom: 1px solid currentColor;
   border-radius: var(--e3da-radius) var(--e3da-radius) 0 0;
   background: var(--color-secondary);
@@ -180,27 +180,27 @@ a {
   text-align: center !important;
 }
 
-.legacy-card-success .legacy-card-header {
+.site-card-success .site-card-header {
   border-bottom-color: var(--color-secondary);
 }
 
-.legacy-card-primary .legacy-card-header {
+.site-card-primary .site-card-header {
   border-bottom-color: var(--color-primary);
 }
 
-.legacy-card-primary {
+.site-card-primary {
   border-color: var(--color-primary);
 }
 
-.legacy-card-primary .legacy-card-header {
+.site-card-primary .site-card-header {
   border-color: var(--color-primary);
   background: var(--color-primary);
   color: var(--color-primary-content);
 }
 
-.legacy-card > .card-body > h2,
-.legacy-card > .card-body > h3,
-.legacy-card > .card-body > h4 {
+.site-card > .card-body > h2,
+.site-card > .card-body > h3,
+.site-card > .card-body > h4 {
   margin: 0 0 1rem;
   padding-bottom: 0.45rem;
   border-bottom: 2px solid var(--e3da-success);
@@ -209,23 +209,23 @@ a {
   text-align: center;
 }
 
-.legacy-card > .card-body > h2 {
+.site-card > .card-body > h2 {
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-.legacy-card > .card-body > h3 {
+.site-card > .card-body > h3 {
   margin-top: 0.5rem;
   font-size: 1.3rem;
   font-weight: 700;
 }
 
-.legacy-card > .card-body > h3:not(:first-child),
-.legacy-card > .card-body > h4:not(:first-child) {
-  margin-top: 1.75rem;
+.site-card > .card-body > h3:not(:first-child),
+.site-card > .card-body > h4:not(:first-child) {
+  margin-top: 1.25rem;
 }
 
-.legacy-button {
+.site-button {
   border-radius: var(--e3da-radius);
   font-weight: 400;
   border-color: var(--color-primary);
@@ -233,7 +233,7 @@ a {
   color: var(--color-primary-content);
 }
 
-.legacy-button:hover {
+.site-button:hover {
   border-color: var(--color-secondary);
   background: var(--color-secondary);
   color: var(--color-secondary-content);
@@ -334,19 +334,27 @@ a {
   text-align: justify;
 }
 
-.legacy-data-table {
+.site-data-table {
   font-size: 0.98rem;
   min-width: 40rem;
 }
 
-.legacy-data-table .table-section-row th {
+.site-data-table thead th {
+  background-color: var(--color-accent) !important;
+  color: var(--color-accent-content) !important;
+  font-size: inherit;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.site-data-table .table-section-row th {
   background: color-mix(in srgb, var(--e3da-primary) 12%, var(--e3da-paper));
   color: var(--e3da-primary-dark);
   font-weight: 700;
   text-align: left;
 }
 
-.legacy-data-table tbody tr:hover {
+.site-data-table tbody tr:hover {
   background: color-mix(in srgb, var(--color-primary) 12%, var(--color-base-100));
 }
 
@@ -527,7 +535,7 @@ a {
   margin: 0 0 1rem;
 }
 
-.current-student-panels > .legacy-card + .legacy-card {
+.current-student-panels > .site-card + .site-card {
   margin-top: 1rem;
 }
 
@@ -644,17 +652,21 @@ a {
 }
 
 .person-actions {
+  display: flex;
+  flex-wrap: wrap;
   position: absolute;
   top: 0;
   right: 0;
   margin: 0 0 1rem;
+  max-width: 100%;
   border-radius: var(--e3da-radius);
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .person-action {
   flex: 0 0 auto;
+  background-color: var(--color-accent) !important;
+  color: var(--color-accent-content) !important;
   font-size: 0.88rem;
   font-weight: 700;
   text-decoration: none;
@@ -667,8 +679,41 @@ a {
 
 .person-action:hover,
 .person-action:focus-visible {
-  background: color-mix(in srgb, var(--color-primary-content) 18%, var(--color-primary));
-  color: var(--color-primary-content);
+  background-color: color-mix(in srgb, var(--color-accent-content) 18%, var(--color-accent)) !important;
+  color: var(--color-accent-content) !important;
+}
+
+.research-area-list {
+  margin: 0 0 1rem;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--color-secondary) 8%, var(--color-base-100));
+}
+
+.content-copy .research-area-heading {
+  margin: 0;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--color-secondary);
+  background: var(--color-secondary);
+  color: var(--color-secondary-content);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.research-area-list .list-row {
+  min-height: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 28%, transparent);
+}
+
+.research-area-link {
+  color: var(--color-success);
+}
+
+.research-area-link:hover,
+.research-area-link:focus-visible {
+  background: color-mix(in srgb, var(--color-secondary) 16%, var(--color-base-100));
+  color: var(--color-success);
 }
 
 .person-record {
@@ -753,22 +798,22 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .legacy-container {
+  .site-container {
     width: 100%;
     padding: 0.75rem 0 !important;
   }
 
-  .legacy-card {
+  .site-card {
     width: 100%;
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 0.35rem !important;
   }
 
-  .legacy-card-header {
+  .site-card-header {
     padding: 0.65rem 0.75rem !important;
   }
 
-  .legacy-card .card-body {
-    padding: 0.85rem 0.75rem;
+  .site-card .card-body {
+    padding: 0.7rem 0.65rem;
   }
 
   .publication-entry {
@@ -781,6 +826,8 @@ a {
 
   .person-actions {
     position: static;
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .person-record {

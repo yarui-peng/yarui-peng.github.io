@@ -1,6 +1,6 @@
 ---
-import LegacyLayout from '../../components/LegacyLayout.astro';
-import LegacyPanel from '../../components/LegacyPanel.astro';
+import SiteLayout from '../../components/SiteLayout.astro';
+import Card from '../../components/Card.astro';
 import ResearchGallery from '../../components/ResearchGallery.astro';
 import { researchOverview } from '../../data/lab-profile';
 
@@ -14,11 +14,11 @@ export function getStaticPaths() {
 const { area } = Astro.props;
 ---
 
-<LegacyLayout title={`${area.title} | E3DA Lab`}>
-  <LegacyPanel title={area.title} headingLevel={1} id={area.id}>
+<SiteLayout title={`${area.title} | E3DA Lab`}>
+  <Card title={area.title} headingLevel={1} id={area.id}>
     <div class="content-copy">
       <p>{area.description}</p>
       <ResearchGallery areaTitle={area.title} images={area.images} />
     </div>
-  </LegacyPanel>
-</LegacyLayout>
+  </Card>
+</SiteLayout>

@@ -1,5 +1,5 @@
 ---
-import LegacyPanel from './LegacyPanel.astro';
+import Card from './Card.astro';
 import { groupRows, rows } from '../data/legacy';
 
 const categories = groupRows(rows('resource/software/tool.csv'));
@@ -13,7 +13,7 @@ const sections = [
 
 <div class="software-directory">
   {sections.map((section) => (
-    <LegacyPanel title={section.title} tone={section.tone}>
+    <Card title={section.title} tone={section.tone}>
       <p class="software-section-description">{section.description}</p>
       <div class="software-category-list">
         {section.groups.map((group) => (
@@ -37,6 +37,6 @@ const sections = [
           </section>
         ))}
       </div>
-    </LegacyPanel>
+    </Card>
   ))}
 </div>

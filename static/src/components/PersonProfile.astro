@@ -22,7 +22,7 @@ const { name, image, email, links = [], badge } = Astro.props;
       <h3>{name}</h3>
       {badge && <span class="person-profile-badge">{badge}</span>}
       {email && <a class="person-email" href={`mailto:${email}`}>{email}</a>}
-      {links.length > 0 && <div class="person-actions join rounded-box" role="group" aria-label={`${name} links`}>{links.map((link) => <a class="person-action join-item btn btn-sm btn-primary font-semibold text-primary-content" href={link.href}>{link.label}</a>)}</div>}
+      {links.length > 0 && <div class="person-actions join rounded-box" role="group" aria-label={`${name} links`}>{links.map((link) => <a class="person-action join-item btn btn-sm btn-accent font-semibold text-accent-content" href={link.href}>{link.label}</a>)}</div>}
     </div>
     <div class="content-copy"><slot /></div>
   </div>

@@ -1,8 +1,8 @@
 ---
-import LegacyLayout from '../components/LegacyLayout.astro';
-import LegacyPanel from '../components/LegacyPanel.astro';
+import SiteLayout from '../components/SiteLayout.astro';
+import Card from '../components/Card.astro';
 ---
 
-<LegacyLayout title="Resource | E3DA Lab">
-  <LegacyPanel title="Resource" headingLevel={1}><h2 class="text-xl font-semibold">Resources</h2><p>Browse the lab's hardware inventory and software environment.</p><div class="mt-4 flex flex-wrap gap-2"><a class="legacy-button btn btn-sm" href="/resource/hardware/">Hardware</a><a class="legacy-button btn btn-sm" href="/resource/software/">Software</a></div></LegacyPanel>
-</LegacyLayout>
+<SiteLayout title="Resource | E3DA Lab">
+  <Card title="Resource" headingLevel={1}><h2 class="text-xl font-semibold">Resources</h2><p>Browse the lab's hardware inventory and software environment.</p><div class="mt-4 flex flex-wrap gap-2"><a class="site-button btn btn-sm" href="/resource/hardware/">Hardware</a><a class="site-button btn btn-sm" href="/resource/software/">Software</a></div></Card>
+</SiteLayout>
